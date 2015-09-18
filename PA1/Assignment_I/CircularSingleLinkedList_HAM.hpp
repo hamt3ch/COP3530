@@ -24,7 +24,7 @@ class Node {
       int value;
       Node* nextNode;
       bool isHead;
-    bool isTail;
+      bool isTail;
 
       Node(int initVal, int strIndex) { // constructor
           index = strIndex;
@@ -37,21 +37,29 @@ class Node {
 class LinkedList {
   public:
     Node* head;
-    int length;
+    int curLength;
 
     LinkedList() { // constructor
       head = NULL;
-      length = 0;
+      curLength = 0;
     }
 
-    void insert (int value, int myIndex) {
+    void insert (int value, int newIndex) {
       //index is out of range
-      if(myIndex <= length) {
-        Node* ptrX = head; //  ptrX = head
-        while(ptrX->index != myIndex) { //find index
-          ptrX = ptrX->nextNode; // move to next node
-
+      if(newIndex > curLength) {
+          
+          int tempLength = curLength;
+        for (int i = 0; i <= newIndex - tempLength; i++) {
+              append(NULL); // add empty nodes
         }
+
+        Node* ptrX = head; //  ptrX = head
+
+        while(!ptrX->nextNode->isHead) { //goto lastNode
+          ptrX = ptrX->nextNode; // move to next node
+        }
+
+        ptrX -> value = value; // set value in append
 
       }
       //index already exist
@@ -94,7 +102,7 @@ class LinkedList {
         }
       }
 
-        length++; // increase length
+        curLength++; // increase length
 
     }
 
@@ -104,8 +112,16 @@ class LinkedList {
       Node* xPtr = head->nextNode;
 
       while(!xPtr->isHead) { // print Node.value till comeback to head
-          cout << xPtr->value << "--";
+          if(xPtr->value) {
+              cout << xPtr->value << "--";
+          }
+
+          else {
+              cout << "Empty" << "--";
+          }
+
           xPtr = xPtr->nextNode;
+
       }
         cout << "end" << endl;
 
@@ -121,7 +137,7 @@ class LinkedList {
 
         cout << "end" << endl;
 
-        cout << "length:" << length << endl;
+        cout << "length:" << curLength << endl;
     }
 
 };

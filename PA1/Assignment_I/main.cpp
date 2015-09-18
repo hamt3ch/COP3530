@@ -16,5 +16,8 @@ int main(int argc, const char * argv[]) {
         tstList->append(i);
         tstList->print();
     }
+
+    tstList->insert(555,20);
+
     tstList->print();
 }
