@@ -1,4 +1,3 @@
-
 //
 //  CircularSingleLinkedList_HAM.hpp
 //  Assignment_I
@@ -24,7 +23,6 @@ class Node {
       int value;
       Node* nextNode;
       bool isHead;
-      bool isTail;
 
       Node(int initVal, int strIndex) { // constructor
           index = strIndex;
@@ -44,33 +42,57 @@ class LinkedList {
       curLength = 0;
     }
 
+    ~LinkedList(){} //deconstructor
+
     void insert (int value, int newIndex) {
       //index is out of range
-      if(newIndex > curLength) {
-          
-          int tempLength = curLength;
-        for (int i = 0; i <= newIndex - tempLength; i++) {
-              append(NULL); // add empty nodes
-        }
+      if(newIndex > curLength + 1) {
 
-        Node* ptrX = head; //  ptrX = head
-
-        while(!ptrX->nextNode->isHead) { //goto lastNode
-          ptrX = ptrX->nextNode; // move to next node
-        }
-
-        ptrX -> value = value; // set value in append
+          cout << "Out of Range for Insert" << endl;
 
       }
+
       //index already exist
       else {
 
-      }
+        //insert at beginning
+        if(newIndex == 0)
+        {
+            append(value); // add new node end of list
+            Node* tail = getTail(); // set that value to Head
+            head = tail;
+            head -> isHead = true;
+            head -> nextNode -> isHead = false; // reset isHead;
 
+        }
+
+       //insert at end
+        else if(newIndex == curLength)
+        {
+            append(value); // just add to end of the list
+        }
+
+        else {
+            //insert index > 0 < curLength
+            Node* ptrX = head -> nextNode; //  X = Runner
+            Node* ptrZ = head;              // z = Follower
+
+            while (ptrX -> index != newIndex) // find place toInsert
+            {
+                ptrZ = ptrX;    //set follower to previousRunner
+                ptrX = ptrX -> nextNode;    // set runner to nextNode over
+            }
+
+            placeNode(ptrX, ptrZ, value); // placeNode in current list
+        }
+      }
+        resetIndexs(); // format newList
     }
 
     //Helper Methods
-    void append(int value){  // add new element to end of list
+
+    //insert.atEnd >> case for adding nodes at the end of list
+    void append(int value){
       if(head == NULL) { //start of list
         head = new Node(value, 0);
         head->isHead = true;
@@ -106,38 +128,99 @@ class LinkedList {
 
     }
 
+    //insert.placeNode >> helps insert into current list
+    void placeNode(Node* runner, Node* follower, int value) { // places node into list
+        Node* newNode = new Node(value, runner->index); //create new Node
+
+        newNode->nextNode = runner; // set newNode >> bottomHalf of List
+
+        follower->nextNode = newNode; // set topHalf of list >> newNode
+
+        Node* ptrX = runner; //set indexPtr = runner
+        int newIndex = runner->index++; // inc old runner
+
+        //fix index
+        while (!ptrX->isHead) {
+            ptrX->index = ++newIndex; // set new indexs for remaining list
+            ptrX = ptrX -> nextNode;
+        }
+        
+        curLength++; // increment length
+
+    }
+
+    Node* getTail(void) {
+
+        Node* ptrX = head->nextNode; // start at head
+        while (!ptrX
+               ->nextNode->isHead) {
+            ptrX = ptrX->nextNode; // move thru list
+        }
+
+        return ptrX;
+    }
+
+    void resetIndexs (void) { // fix index in list
+        Node* ptrX = head; // start at head
+        int newIndex = 0;
+        do
+        {
+            ptrX -> index = newIndex++;
+            ptrX = ptrX -> nextNode; // move to next node
+        } while (!ptrX->isHead);
+
+        curLength = ++newIndex;
+    }
+
     //Print List
     void print (void) {
-      cout << "head" << "--" << head->value << "--";  // print head intially
-      Node* xPtr = head->nextNode;
-
-      while(!xPtr->isHead) { // print Node.value till comeback to head
-          if(xPtr->value) {
-              cout << xPtr->value << "--";
+      cout << "head" << "--";  // print head intially
+      Node* ptrX = head;
+      do
+       { // print Node.value till comeback to head
+          if(ptrX->value) {
+              cout << ptrX->value << "--";
           }
 
           else {
               cout << "Empty" << "--";
           }
 
-          xPtr = xPtr->nextNode;
+          ptrX = ptrX->nextNode;
 
-      }
+       } while(!ptrX->isHead);
+
         cout << "end" << endl;
 
         cout << "<index>" << endl;
+        ptrX = head;
+        do
+        { // print Node.value till comeback to head
+            if(ptrX->value) {
+                cout << ptrX->index << "--";
+            }
 
-        cout << "head" << "--" << head->index << "--";  // print head intially
-        xPtr = head->nextNode;
+            else {
+                cout << "Empty" << "--";
+            }
 
-        while(!xPtr->isHead) { // print Node.value till comeback to head
-            cout << xPtr->index << "--";
-            xPtr = xPtr->nextNode;
-        }
+            ptrX = ptrX->nextNode;
+
+        } while(!ptrX->isHead);
+
 
         cout << "end" << endl;
 
         cout << "length:" << curLength << endl;
+    }
+
+    void printAtIndex(int indexToPrint) {
+        Node* ptrX = head; // start at head
+        while (ptrX->index != indexToPrint){
+            ptrX = ptrX -> nextNode; // move thru list till index is found
+        }
+
+        cout << "element at index: " << indexToPrint << " = " << ptrX->value << endl;
     }
 
 };

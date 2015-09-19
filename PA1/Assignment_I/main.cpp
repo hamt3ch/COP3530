@@ -12,12 +12,30 @@
 int main(int argc, const char * argv[]) {
     LinkedList* tstList = new LinkedList();
 
-    for(int i = 10; i > 0; i--){
+    for(int i = 1; i < 11; i++){
         tstList->append(i);
-        tstList->print();
+        tstList->resetIndexs();
     }
 
-    tstList->insert(555,20);
-
+    cout << "////Insert 555 at index////" << endl;
+    tstList->insert(555, 1);
     tstList->print();
+    cout << "//////////////////////////" << endl;
+
+    cout << endl;
+    
+    cout << "////Insert 1010 at front////" << endl;
+    tstList->insert(1010, 0);
+    tstList->print();
+    cout << "//////////////////////////" << endl;
+    
+    cout << endl;
+
+    cout << "////Insert 555 at back////" << endl;
+    tstList->insert(333, 11);
+    tstList->print();
+    cout << "//////////////////////////" << endl;
+    
+    cout << endl;
+
 }
