@@ -14,8 +14,10 @@ int main(int argc, const char * argv[]) {
 
     for(int i = 1; i < 11; i++){
         tstList->append(i);
-        tstList->resetIndexs();
     }
+    cout << "Starting List" << endl;
+    tstList->print();
+    cout << endl;
 
     cout << "////Insert 555 at index////" << endl;
     tstList->insert(555, 1);
@@ -32,7 +34,7 @@ int main(int argc, const char * argv[]) {
     cout << endl;
 
     cout << "////Insert 555 at back////" << endl;
-    tstList->insert(333, 11);
+    tstList->insert(333, 12);
     tstList->print();
     cout << "//////////////////////////" << endl;
     

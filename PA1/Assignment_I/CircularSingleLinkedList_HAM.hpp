@@ -169,7 +169,7 @@ class LinkedList {
             ptrX = ptrX -> nextNode; // move to next node
         } while (!ptrX->isHead);
 
-        curLength = ++newIndex;
+        curLength = newIndex;
     }
 
     //Print List
