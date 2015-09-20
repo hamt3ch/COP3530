@@ -12,32 +12,41 @@
 int main(int argc, const char * argv[]) {
     LinkedList* tstList = new LinkedList();
 
-    for(int i = 1; i < 11; i++){
+    for(int i = 0; i < 11; i++){
         tstList->append(i);
     }
     cout << "Starting List" << endl;
     tstList->print();
     cout << endl;
+    
+    tstList->deleteNode(11);
 
-    cout << "////Insert 555 at index////" << endl;
-    tstList->insert(555, 1);
+    cout << "Ending List" << endl;
     tstList->print();
-    cout << "//////////////////////////" << endl;
-
     cout << endl;
     
-    cout << "////Insert 1010 at front////" << endl;
-    tstList->insert(1010, 0);
-    tstList->print();
-    cout << "//////////////////////////" << endl;
     
-    cout << endl;
-
-    cout << "////Insert 555 at back////" << endl;
-    tstList->insert(333, 12);
-    tstList->print();
-    cout << "//////////////////////////" << endl;
     
-    cout << endl;
+//
+//    cout << "////Insert 555 at index////" << endl;
+//    tstList->insert(555, 1);
+//    tstList->print();
+//    cout << "//////////////////////////" << endl;
+//6
+//    cout << endl;
+//    
+//    cout << "////Insert 1010 at front////" << endl;
+//    tstList->insert(1010, 0);
+//    tstList->print();
+//    cout << "//////////////////////////" << endl;
+//    
+//    cout << endl;
+//
+//    cout << "////Insert 555 at back////" << endl;
+//    tstList->insert(333, 12);
+//    tstList->print();
+//    cout << "//////////////////////////" << endl;
+//    
+//    cout << endl;
 
 }

@@ -18,6 +18,8 @@ using namespace std;
 //template <class type>
 
 class Node {
+  private:
+    
   public:
       int index;
       int value;
@@ -42,13 +44,16 @@ class LinkedList {
       curLength = 0;
     }
 
-    ~LinkedList(){} //deconstructor
-
+    ~LinkedList(){ //destructor
+        
+    
+    }
+    
     void insert (int value, int newIndex) {
       //index is out of range
       if(newIndex > curLength + 1) {
 
-          cout << "Out of Range for Insert" << endl;
+          cout << "Insert.newIndex is out of range" << endl;
 
       }
 
@@ -88,6 +93,54 @@ class LinkedList {
       }
         resetIndexs(); // format newList
     }
+    
+    //delete Node ar index
+    void deleteNode(int indexToDelete) {
+        
+        Node* runner = head;
+        Node* follower;
+        
+        if(indexToDelete >= curLength) { //check if user input is valid
+            cout << "deleteNode.indexToDelete is out of range" << endl;
+        }
+        
+        else {
+            
+            //delete index0 = head
+            if(indexToDelete == 0) {
+                runner = head;
+                follower = getTail(); // get lastNode
+                
+                Node* rightNode = runner->nextNode;
+                Node* leftNode = follower;
+                
+                leftNode->nextNode = rightNode;
+                rightNode->isHead = true;
+                
+                delete runner;
+                
+                head = rightNode;
+                
+            }
+            
+            //delete !index0
+            else {
+                while (runner->index != indexToDelete) { // find nodeToDelete
+                    follower = runner; // set follower to old runner
+                    runner = runner->nextNode; // move to nextNode
+                }
+                
+                Node* rightNode = runner->nextNode;
+                Node* leftNode = follower;
+                
+                leftNode->nextNode = rightNode;
+                
+                delete runner;
+            }
+        }
+    
+        resetIndexs(); // reformat list
+    }
 
     //Helper Methods
 
@@ -114,8 +167,8 @@ class LinkedList {
                 ptrX = ptrX->nextNode; //move to nextNode
 
             }
+            
             lastNodeIndex = ptrX->index + 1 ; // save last node Index
-
 
             ptrX->nextNode = new Node(value, lastNodeIndex); // create new Node and set index value
 
@@ -144,11 +197,12 @@ class LinkedList {
             ptrX->index = ++newIndex; // set new indexs for remaining list
             ptrX = ptrX -> nextNode;
         }
-        
+
         curLength++; // increment length
 
     }
 
+    //findLastNode
     Node* getTail(void) {
 
         Node* ptrX = head->nextNode; // start at head
@@ -174,36 +228,31 @@ class LinkedList {
 
     //Print List
     void print (void) {
-      cout << "head" << "--";  // print head intially
+      cout << "[";  // print head intially
       Node* ptrX = head;
       do
        { // print Node.value till comeback to head
-          if(ptrX->value) {
-              cout << ptrX->value << "--";
-          }
+          cout << ptrX->value;
 
-          else {
-              cout << "Empty" << "--";
+          if(ptrX->nextNode->isHead) // at the last Node
+          {
+              cout << "]";
+              break;
           }
+           
+          cout << ",";
 
           ptrX = ptrX->nextNode;
 
        } while(!ptrX->isHead);
-
-        cout << "end" << endl;
-
+        
+        cout << endl;
         cout << "<index>" << endl;
         ptrX = head;
         do
         { // print Node.value till comeback to head
-            if(ptrX->value) {
-                cout << ptrX->index << "--";
-            }
-
-            else {
-                cout << "Empty" << "--";
-            }
-
+            cout << ptrX->index << "--";
+           
             ptrX = ptrX->nextNode;
 
         } while(!ptrX->isHead);
