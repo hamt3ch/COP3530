@@ -6,47 +6,61 @@
 //  Copyright © 2015 HAM. All rights reserved.
 //
 
+#include <fstream>
 #include <iostream>
 #include "CircularSingleLinkedList_HAM.hpp"
 
 int main(int argc, const char * argv[]) {
-    LinkedList* tstList = new LinkedList();
-
-    for(int i = 0; i < 11; i++){
-        tstList->append(i);
+    LinkedList myList = *new LinkedList();
+    myList.print();
+    
+    ifstream inputFile;
+    inputFile.open("input.txt");
+    
+    if(inputFile.fail()){  //indicate file is not able to be read
+        cerr << "Error opening file" << endl;
+        exit(1);
     }
-    cout << "Starting List" << endl;
-    tstList->print();
-    cout << endl;
     
-    tstList->deleteNode(11);
+    int numOfCommands;  // getNumberOfCommands
+    inputFile >> numOfCommands;
+    cout << "Number of Commands:" << numOfCommands << endl;
+    
+    while(inputFile.good() && numOfCommands > 0)
+    {
+        string command;
+        int index;
+        int value;
+        
+        inputFile >> command;
+        if(command.compare("I") == 0) { //parse commands from inputFile
+            inputFile >> value;
+            inputFile >> index;
+            cout << "Insert " << value << " at " << index << endl;
+        }
+        
+        else if(command.compare("D") == 0) {   // Delete at Index
+            inputFile >> index;
+            cout << "Delete element at "<< index << endl;
+        }
+        
+        else if(command.compare("S") == 0) { // Print entire list
+            cout << "Print entire list" << endl;
+        }
+        
+        else if(command.compare("P") == 0) { // Print at Index
+            inputFile >> index;
+            cout << "Print element at " << index << endl;
+        }
+                
+        else if(command.compare("J") == 0) { // Activate Josephus
+            cout << "Start Josephus" << endl;
+        }
+        
+        else
+        {
+            cout << "Unknown Command" << endl;
+        }
 
-    cout << "Ending List" << endl;
-    tstList->print();
-    cout << endl;
-    
-    
-    
-//
-//    cout << "////Insert 555 at index////" << endl;
-//    tstList->insert(555, 1);
-//    tstList->print();
-//    cout << "//////////////////////////" << endl;
-//6
-//    cout << endl;
-//    
-//    cout << "////Insert 1010 at front////" << endl;
-//    tstList->insert(1010, 0);
-//    tstList->print();
-//    cout << "//////////////////////////" << endl;
-//    
-//    cout << endl;
-//
-//    cout << "////Insert 555 at back////" << endl;
-//    tstList->insert(333, 12);
-//    tstList->print();
-//    cout << "//////////////////////////" << endl;
-//    
-//    cout << endl;
-
+    }
 }

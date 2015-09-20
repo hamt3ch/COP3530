@@ -23,6 +23,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A80A1F421BAF4572007C9FB3 /* input.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = input.txt; sourceTree = "<group>"; };
 		A83A43B41BA21C5400C13298 /* Assignment_I */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Assignment_I; sourceTree = BUILT_PRODUCTS_DIR; };
 		A83A43B71BA21C5400C13298 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		A83A43BF1BA21C7B00C13298 /* CircularSingleLinkedList_HAM.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CircularSingleLinkedList_HAM.hpp; sourceTree = "<group>"; };
@@ -58,6 +59,7 @@
 		A83A43B61BA21C5400C13298 /* Assignment_I */ = {
 			isa = PBXGroup;
 			children = (
+				A80A1F421BAF4572007C9FB3 /* input.txt */,
 				A83A43B71BA21C5400C13298 /* main.cpp */,
 				A83A43BF1BA21C7B00C13298 /* CircularSingleLinkedList_HAM.hpp */,
 			);
@@ -237,6 +239,7 @@
 				A83A43BD1BA21C5400C13298 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

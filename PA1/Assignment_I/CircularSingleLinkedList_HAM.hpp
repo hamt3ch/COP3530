@@ -45,8 +45,13 @@ class LinkedList {
     }
 
     ~LinkedList(){ //destructor
-        
-    
+        Node* myPtr = head;
+        Node* temp;
+        while(myPtr != NULL) {
+            temp = myPtr->nextNode;
+            delete myPtr;
+            myPtr = temp;
+        }
     }
     
     void insert (int value, int newIndex) {
@@ -230,6 +235,11 @@ class LinkedList {
     void print (void) {
       cout << "[";  // print head intially
       Node* ptrX = head;
+      
+      if (head == NULL) {
+            cout << "List is Empty";
+      }
+        
       do
        { // print Node.value till comeback to head
           cout << ptrX->value;
