@@ -58,6 +58,7 @@ class LinkedList {
       if(newIndex > curLength + 1) {
 
           cout << "Insert.newIndex is out of range" << endl;
+        
 
       }
 
@@ -258,20 +259,6 @@ class LinkedList {
        } while(!ptrX->isHead);
         
         cout << endl;
-//        cout << "<index>" << endl;
-//        ptrX = head;
-//        do
-//        { // print Node.value till comeback to head
-//            cout << ptrX->index << "--";
-//           
-//            ptrX = ptrX->nextNode;
-//
-//        } while(!ptrX->isHead);
-//
-
-        //cout << "end" << endl;
-
-       // cout << "length:" << curLength << endl;
     }
 
     void printAtIndex(int indexToPrint) {
@@ -283,7 +270,7 @@ class LinkedList {
             count++;
         }
 
-        cout << "element at index: " << indexToPrint << " = " << ptrX->value << endl;
+        cout << ptrX->value << endl;
     }
     
     void josephus(int k) { //playing the game

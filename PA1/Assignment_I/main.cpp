@@ -11,11 +11,13 @@
 #include <iostream>
 #include "CircularSingleLinkedList_HAM.hpp"
 
-int main(int argc, const char * argv[]) {
+int main(int argc, char * argv[]) {
     LinkedList<int>* myList = new LinkedList<int>();
 
+    //cout << argv[1] << endl;
+    
     ifstream inputFile;
-    inputFile.open("input.txt");
+    inputFile.open(argv[1]); // argv[1] = userInput.txt
     
     if(inputFile.fail()){  //indicate file is not able to be read
         cerr << "Error opening file" << endl;
@@ -24,7 +26,6 @@ int main(int argc, const char * argv[]) {
     
     int numOfCommands;  // getNumberOfCommands
     inputFile >> numOfCommands;
-    cout << "Number of Commands:" << numOfCommands << endl;
     
     while(inputFile.good() && numOfCommands > 0)
     {
@@ -36,43 +37,38 @@ int main(int argc, const char * argv[]) {
         if(command.compare("I") == 0) { //parse commands from inputFile
             inputFile >> value;
             inputFile >> index;
-            cout << "Insert " << value << " at " << index << endl;
-           myList->insert(value, index);
+            myList->insert(value, index);
         }
         
         else if(command.compare("D") == 0) {   // Delete at Index
             inputFile >> index;
-            cout << "Delete element at "<< index << endl;
             myList->deleteNode(index);
         }
         
         else if(command.compare("S") == 0) { // Print entire list
-            cout << "Print entire list" << endl;
             myList->print();
         }
         
         else if(command.compare("P") == 0) { // Print at Index
             inputFile >> index;
-            cout << "Print element at " << index << endl;
             myList->printAtIndex(index);
         }
                 
         else if(command.compare("J") == 0) { // Activate Josephus
-            cout << "Start Josephus" << endl;
             int jInsertions;
             int kToDelete;
             
             inputFile >> jInsertions;   //get amount of insertions
             inputFile >> kToDelete; // terms
             
-//            int count = 0;
-//            int temp;
-//            while (jInsertions > count) { // add josephus terms to front of list
-//                inputFile >> temp;
-//                myList->insert(temp, 0);
-//                count++;
-//            }
-//            myList->print();
+            int count = 0;
+            int temp;
+            while (jInsertions > count) { // add josephus terms to front of list
+                inputFile >> temp;
+                myList->insert(temp, 0);
+                count++;
+            }
+            myList->print();
             myList->josephus(kToDelete);
         
         }
