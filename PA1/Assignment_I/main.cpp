@@ -11,9 +11,8 @@
 #include "CircularSingleLinkedList_HAM.hpp"
 
 int main(int argc, const char * argv[]) {
-    LinkedList myList = *new LinkedList();
-    myList.print();
-    
+    LinkedList* myList = new LinkedList();
+
     ifstream inputFile;
     inputFile.open("input.txt");
     
@@ -37,20 +36,24 @@ int main(int argc, const char * argv[]) {
             inputFile >> value;
             inputFile >> index;
             cout << "Insert " << value << " at " << index << endl;
+           myList->insert(value, index);
         }
         
         else if(command.compare("D") == 0) {   // Delete at Index
             inputFile >> index;
             cout << "Delete element at "<< index << endl;
+            myList->deleteNode(index);
         }
         
         else if(command.compare("S") == 0) { // Print entire list
             cout << "Print entire list" << endl;
+            myList->print();
         }
         
         else if(command.compare("P") == 0) { // Print at Index
             inputFile >> index;
             cout << "Print element at " << index << endl;
+            myList->printAtIndex(index);
         }
                 
         else if(command.compare("J") == 0) { // Activate Josephus
@@ -61,6 +64,9 @@ int main(int argc, const char * argv[]) {
         {
             cout << "Unknown Command" << endl;
         }
-
+        
+        numOfCommands--;
     }
+    
+    cout << "end of program" << endl;
 }

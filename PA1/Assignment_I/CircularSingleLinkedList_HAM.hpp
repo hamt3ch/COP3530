@@ -16,10 +16,7 @@
 using namespace std;
 
 //template <class type>
-
 class Node {
-  private:
-    
   public:
       int index;
       int value;
@@ -33,6 +30,7 @@ class Node {
           isHead = false;
       }
 };
+
 
 class LinkedList {
   public:
@@ -71,9 +69,8 @@ class LinkedList {
             append(value); // add new node end of list
             Node* tail = getTail(); // set that value to Head
             head = tail;
-            head -> isHead = true;
             head -> nextNode -> isHead = false; // reset isHead;
-
+            head -> isHead = true;
         }
 
        //insert at end
@@ -222,6 +219,7 @@ class LinkedList {
     void resetIndexs (void) { // fix index in list
         Node* ptrX = head; // start at head
         int newIndex = 0;
+        
         do
         {
             ptrX -> index = newIndex++;
@@ -233,12 +231,14 @@ class LinkedList {
 
     //Print List
     void print (void) {
-      cout << "[";  // print head intially
       Node* ptrX = head;
       
       if (head == NULL) {
-            cout << "List is Empty";
+            cout << "List is Empty" << endl;
+          return;
       }
+       
+      cout << "[";  // print head intially
         
       do
        { // print Node.value till comeback to head
