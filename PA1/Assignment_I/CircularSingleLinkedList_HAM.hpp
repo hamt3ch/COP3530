@@ -104,9 +104,16 @@ class LinkedList {
         Node<t> *runner = head;
         Node<t>* follower;
         
+        if(curLength == 1 && indexToDelete == 0) {
+            curLength = 0; // reset list
+            head = NULL;
+            return;
+        }
+        
         if(indexToDelete >= curLength) { //check if user input is valid
             cout << "deleteNode.indexToDelete is out of range" << endl;
         }
+        
         
         else {
             
@@ -274,6 +281,8 @@ class LinkedList {
     }
     
     void josephus(int k) { //playing the game
+        
+        if (head) {
         Node<t>* delPtr = head; // start at head
         Node<t>* tempPtr;
         int count = 1;
@@ -294,7 +303,7 @@ class LinkedList {
         //lastNode
         cout << tempPtr->value << "]";
         delete tempPtr; // delete lastNode
-        
+        }
     }
 
 };

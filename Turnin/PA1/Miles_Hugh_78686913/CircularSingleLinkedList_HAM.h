@@ -103,12 +103,17 @@ class LinkedList {
         Node<t> *runner = head;
         Node<t>* follower;
 
-        if(indexToDelete >= curLength) { //check if user input is valid
+        if(curLength == 1 && indexToDelete == 0) {
+            curLength = 0; // reset list
+            head = NULL;
+            return;
+        }
+
+        else if(indexToDelete >= curLength) { //check if user input is valid
             cout << "deleteNode.indexToDelete is out of range" << endl;
         }
 
         else {
-
             //delete index0 = head
             if(indexToDelete == 0) {
                 runner = head;
@@ -280,6 +285,7 @@ class LinkedList {
     }
 
     void josephus(int k) { //playing the game
+        if(head) {
         Node<t>* delPtr = head; // start at head
         Node<t>* tempPtr;
         int count = 1;
@@ -300,7 +306,7 @@ class LinkedList {
         //lastNode
         cout << tempPtr->value << "]";
     }
-
+  }
 };
 
 #endif /* CircularSingleLinkedList_HAM_hpp */
