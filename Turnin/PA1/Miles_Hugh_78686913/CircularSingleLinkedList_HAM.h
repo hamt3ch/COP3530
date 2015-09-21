@@ -268,7 +268,7 @@ class LinkedList {
     void printAtIndex(int indexToPrint) {
         Node<t>* ptrX = head; // start at head
 
-        if(indexToPrint > curLength + 1)
+        if(indexToPrint > curLength - 1)
         {
           cout << "indexToPrint(" << indexToPrint << ") is out of range" << endl;
           return;
