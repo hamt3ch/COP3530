@@ -23,7 +23,7 @@ class Node {
       Node<type> *nextNode;
       bool isHead;
 
-      Node(int initVal, int strIndex) { // constructor
+      Node(type initVal, int strIndex) { // constructor
           index = strIndex;
           value = initVal;
           nextNode = NULL;
@@ -52,12 +52,12 @@ class LinkedList {
             myPtr = temp;
         }
     }
-    
+
     void insert (t value, int newIndex) {
       //index is out of range
       if(newIndex > curLength + 1) {
 
-          cout << "Insert.newIndex is out of range" << endl;
+          cout << "Insert.newIndex(" << newIndex << ") is out of range" << endl;
 
       }
 
@@ -75,7 +75,7 @@ class LinkedList {
         }
 
        //insert at end
-        else if(newIndex == curLength)
+        else if(newIndex == curLength || newIndex == curLength + 1)
         {
             append(value); // just add to end of the list
         }
@@ -96,52 +96,52 @@ class LinkedList {
       }
         resetIndexs(); // format newList
     }
-    
+
     //delete Node ar index
     void deleteNode(int indexToDelete) {
-        
+
         Node<t> *runner = head;
         Node<t>* follower;
-        
+
         if(indexToDelete >= curLength) { //check if user input is valid
             cout << "deleteNode.indexToDelete is out of range" << endl;
         }
-        
+
         else {
-            
+
             //delete index0 = head
             if(indexToDelete == 0) {
                 runner = head;
                 follower = getTail(); // get lastNode
-                
+
                 Node<t> *rightNode = runner->nextNode;
                 Node<t> *leftNode = follower;
-                
+
                 leftNode->nextNode = rightNode;
                 rightNode->isHead = true;
-                
+
                 delete runner;
-                
+
                 head = rightNode;
-                
+
             }
-            
+
             //delete !index0
             else {
                 while (runner->index != indexToDelete) { // find nodeToDelete
                     follower = runner; // set follower to old runner
                     runner = runner->nextNode; // move to nextNode
                 }
-                
+
                 Node<t> *rightNode = runner->nextNode;
                 Node<t> *leftNode = follower;
-                
+
                 leftNode->nextNode = rightNode;
-                
+
                 delete runner;
             }
         }
-    
+
         resetIndexs(); // reformat list
     }
 
@@ -170,7 +170,7 @@ class LinkedList {
                 ptrX = ptrX->nextNode; //move to nextNode
 
             }
-            
+
             lastNodeIndex = ptrX->index + 1 ; // save last node Index
 
             ptrX->nextNode = new Node<t>(value, lastNodeIndex); // create new Node and set index value
@@ -220,7 +220,7 @@ class LinkedList {
     void resetIndexs (void) { // fix index in list
         Node<t>* ptrX = head; // start at head
         int newIndex = 0;
-        
+
         do
         {
             ptrX -> index = newIndex++;
@@ -233,14 +233,14 @@ class LinkedList {
     //Print List
     void print (void) {
       Node<t>* ptrX = head;
-      
+
       if (head == NULL) {
             cout << "List is Empty" << endl;
           return;
       }
-       
+
       cout << "[";  // print head intially
-        
+
       do
        { // print Node.value till comeback to head
           cout << ptrX->value;
@@ -250,20 +250,27 @@ class LinkedList {
               cout << "]";
               break;
           }
-           
+
           cout << ",";
 
           ptrX = ptrX->nextNode;
 
        } while(!ptrX->isHead);
-        
+
         cout << endl;
     }
 
     void printAtIndex(int indexToPrint) {
         Node<t>* ptrX = head; // start at head
+
+        if(indexToPrint > curLength + 1)
+        {
+          cout << "indexToPrint(" << indexToPrint << ") is out of range" << endl;
+          return;
+        }
+
         int count = 0;
-        
+
         while (count != indexToPrint){
             ptrX = ptrX -> nextNode; // move thru list till index is found
             count++;
@@ -271,7 +278,7 @@ class LinkedList {
 
         cout << ptrX->value << endl;
     }
-    
+
     void josephus(int k) { //playing the game
         Node<t>* delPtr = head; // start at head
         Node<t>* tempPtr;
@@ -285,15 +292,13 @@ class LinkedList {
                 deleteNode(delPtr->index); //delete this Node
                 count = 0; // reset count
             }
-            
+
             count++;
             delPtr = tempPtr; // move to nextNode
         }
-        
+
         //lastNode
         cout << tempPtr->value << "]";
-        delete tempPtr; // delete lastNode
-        
     }
 
 };
