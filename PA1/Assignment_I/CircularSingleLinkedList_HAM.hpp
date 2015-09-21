@@ -76,7 +76,7 @@ class LinkedList {
         }
 
        //insert at end
-        else if(newIndex == curLength)
+        else if(newIndex == curLength || newIndex == curLength + 1)
         {
             append(value); // just add to end of the list
         }

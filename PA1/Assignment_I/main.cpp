@@ -17,7 +17,7 @@ int main(int argc, char * argv[]) {
     //cout << argv[1] << endl;
     
     ifstream inputFile;
-    inputFile.open(argv[1]); // argv[1] = userInput.txt
+    inputFile.open("input.txt"); // argv[1] = userInput.txt
     
     if(inputFile.fail()){  //indicate file is not able to be read
         cerr << "Error opening file" << endl;
