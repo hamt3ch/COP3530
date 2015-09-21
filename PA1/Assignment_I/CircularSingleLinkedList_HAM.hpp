@@ -15,12 +15,12 @@
 #include <string>
 using namespace std;
 
-//template <class type>
+template <class type>
 class Node {
   public:
       int index;
-      int value;
-      Node* nextNode;
+      type value;
+      Node<type> *nextNode;
       bool isHead;
 
       Node(int initVal, int strIndex) { // constructor
@@ -32,9 +32,10 @@ class Node {
 };
 
 
+template<class t>
 class LinkedList {
   public:
-    Node* head;
+    Node<t> *head;
     int curLength;
 
     LinkedList() { // constructor
@@ -43,8 +44,8 @@ class LinkedList {
     }
 
     ~LinkedList(){ //destructor
-        Node* myPtr = head;
-        Node* temp;
+        Node<t> *myPtr = head;
+        Node<t> *temp;
         while(myPtr != NULL) {
             temp = myPtr->nextNode;
             delete myPtr;
@@ -52,7 +53,7 @@ class LinkedList {
         }
     }
     
-    void insert (int value, int newIndex) {
+    void insert (t value, int newIndex) {
       //index is out of range
       if(newIndex > curLength + 1) {
 
@@ -67,7 +68,7 @@ class LinkedList {
         if(newIndex == 0)
         {
             append(value); // add new node end of list
-            Node* tail = getTail(); // set that value to Head
+            Node<t> *tail = getTail(); // set that value to Head
             head = tail;
             head -> nextNode -> isHead = false; // reset isHead;
             head -> isHead = true;
@@ -81,8 +82,8 @@ class LinkedList {
 
         else {
             //insert index > 0 < curLength
-            Node* ptrX = head -> nextNode; //  X = Runner
-            Node* ptrZ = head;              // z = Follower
+            Node<t> *ptrX = head -> nextNode; //  X = Runner
+            Node<t> *ptrZ = head;              // z = Follower
 
             while (ptrX -> index != newIndex) // find place toInsert
             {
@@ -99,8 +100,8 @@ class LinkedList {
     //delete Node ar index
     void deleteNode(int indexToDelete) {
         
-        Node* runner = head;
-        Node* follower;
+        Node<t> *runner = head;
+        Node<t>* follower;
         
         if(indexToDelete >= curLength) { //check if user input is valid
             cout << "deleteNode.indexToDelete is out of range" << endl;
@@ -113,8 +114,8 @@ class LinkedList {
                 runner = head;
                 follower = getTail(); // get lastNode
                 
-                Node* rightNode = runner->nextNode;
-                Node* leftNode = follower;
+                Node<t> *rightNode = runner->nextNode;
+                Node<t> *leftNode = follower;
                 
                 leftNode->nextNode = rightNode;
                 rightNode->isHead = true;
@@ -132,8 +133,8 @@ class LinkedList {
                     runner = runner->nextNode; // move to nextNode
                 }
                 
-                Node* rightNode = runner->nextNode;
-                Node* leftNode = follower;
+                Node<t> *rightNode = runner->nextNode;
+                Node<t> *leftNode = follower;
                 
                 leftNode->nextNode = rightNode;
                 
@@ -147,18 +148,18 @@ class LinkedList {
     //Helper Methods
 
     //insert.atEnd >> case for adding nodes at the end of list
-    void append(int value){
+    void append(t value){
       if(head == NULL) { //start of list
-        head = new Node(value, 0);
+        head = new Node<t>(value, 0);
         head->isHead = true;
         head->nextNode = head; // set nextNode to itself
       }
 
       else { //head already exist
-        Node* ptrX = head->nextNode; //set index pointer to next Node
+        Node<t> *ptrX = head->nextNode; //set index pointer to next Node
 
         if(ptrX->isHead){ // one Node in List
-            head->nextNode = new Node(value,1); // create new node right after HEAD
+            head->nextNode = new Node<t>(value,1); // create new node right after HEAD
             ptrX = head->nextNode;  // ptrX = new Node
             ptrX->nextNode = head; // set nextNode = head
         }
@@ -172,9 +173,9 @@ class LinkedList {
             
             lastNodeIndex = ptrX->index + 1 ; // save last node Index
 
-            ptrX->nextNode = new Node(value, lastNodeIndex); // create new Node and set index value
+            ptrX->nextNode = new Node<t>(value, lastNodeIndex); // create new Node and set index value
 
-            Node* endNode = ptrX->nextNode; // set endNode value
+            Node<t>* endNode = ptrX->nextNode; // set endNode value
             endNode -> nextNode = head; // set endNode.Next >> head
         }
       }
@@ -184,14 +185,14 @@ class LinkedList {
     }
 
     //insert.placeNode >> helps insert into current list
-    void placeNode(Node* runner, Node* follower, int value) { // places node into list
-        Node* newNode = new Node(value, runner->index); //create new Node
+    void placeNode(Node<t>* runner, Node<t>* follower, t value) { // places node into list
+        Node<t>* newNode = new Node<t>(value, runner->index); //create new Node
 
         newNode->nextNode = runner; // set newNode >> bottomHalf of List
 
         follower->nextNode = newNode; // set topHalf of list >> newNode
 
-        Node* ptrX = runner; //set indexPtr = runner
+        Node<t>* ptrX = runner; //set indexPtr = runner
         int newIndex = runner->index++; // inc old runner
 
         //fix index
@@ -205,9 +206,9 @@ class LinkedList {
     }
 
     //findLastNode
-    Node* getTail(void) {
+    Node<t>* getTail(void) {
 
-        Node* ptrX = head->nextNode; // start at head
+        Node<t>* ptrX = head->nextNode; // start at head
         while (!ptrX
                ->nextNode->isHead) {
             ptrX = ptrX->nextNode; // move thru list
@@ -217,7 +218,7 @@ class LinkedList {
     }
 
     void resetIndexs (void) { // fix index in list
-        Node* ptrX = head; // start at head
+        Node<t>* ptrX = head; // start at head
         int newIndex = 0;
         
         do
@@ -231,7 +232,7 @@ class LinkedList {
 
     //Print List
     void print (void) {
-      Node* ptrX = head;
+      Node<t>* ptrX = head;
       
       if (head == NULL) {
             cout << "List is Empty" << endl;
@@ -257,29 +258,56 @@ class LinkedList {
        } while(!ptrX->isHead);
         
         cout << endl;
-        cout << "<index>" << endl;
-        ptrX = head;
-        do
-        { // print Node.value till comeback to head
-            cout << ptrX->index << "--";
-           
-            ptrX = ptrX->nextNode;
+//        cout << "<index>" << endl;
+//        ptrX = head;
+//        do
+//        { // print Node.value till comeback to head
+//            cout << ptrX->index << "--";
+//           
+//            ptrX = ptrX->nextNode;
+//
+//        } while(!ptrX->isHead);
+//
 
-        } while(!ptrX->isHead);
+        //cout << "end" << endl;
 
-
-        cout << "end" << endl;
-
-        cout << "length:" << curLength << endl;
+       // cout << "length:" << curLength << endl;
     }
 
     void printAtIndex(int indexToPrint) {
-        Node* ptrX = head; // start at head
-        while (ptrX->index != indexToPrint){
+        Node<t>* ptrX = head; // start at head
+        int count = 0;
+        
+        while (count != indexToPrint){
             ptrX = ptrX -> nextNode; // move thru list till index is found
+            count++;
         }
 
         cout << "element at index: " << indexToPrint << " = " << ptrX->value << endl;
+    }
+    
+    void josephus(int k) { //playing the game
+        Node<t>* delPtr = head; // start at head
+        Node<t>* tempPtr;
+        int count = 1;
+        cout << "[";
+        while (curLength > 1) {
+            tempPtr = delPtr->nextNode; // save nextNode over
+            if(count == k)
+            {  //delete this Node
+                cout << delPtr->value << ",";
+                deleteNode(delPtr->index); //delete this Node
+                count = 0; // reset count
+            }
+            
+            count++;
+            delPtr = tempPtr; // move to nextNode
+        }
+        
+        //lastNode
+        cout << tempPtr->value << "]";
+        delete tempPtr; // delete lastNode
+        
     }
 
 };

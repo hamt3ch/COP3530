@@ -1,3 +1,4 @@
+
 //
 //  main.cpp
 //  Assignment_I
@@ -11,7 +12,7 @@
 #include "CircularSingleLinkedList_HAM.hpp"
 
 int main(int argc, const char * argv[]) {
-    LinkedList* myList = new LinkedList();
+    LinkedList<int>* myList = new LinkedList<int>();
 
     ifstream inputFile;
     inputFile.open("input.txt");
@@ -58,6 +59,22 @@ int main(int argc, const char * argv[]) {
                 
         else if(command.compare("J") == 0) { // Activate Josephus
             cout << "Start Josephus" << endl;
+            int jInsertions;
+            int kToDelete;
+            
+            inputFile >> jInsertions;   //get amount of insertions
+            inputFile >> kToDelete; // terms
+            
+//            int count = 0;
+//            int temp;
+//            while (jInsertions > count) { // add josephus terms to front of list
+//                inputFile >> temp;
+//                myList->insert(temp, 0);
+//                count++;
+//            }
+//            myList->print();
+            myList->josephus(kToDelete);
+        
         }
         
         else
@@ -68,5 +85,6 @@ int main(int argc, const char * argv[]) {
         numOfCommands--;
     }
     
-    cout << "end of program" << endl;
+    cout << endl << "<<<<EOP>>>>" << endl;
+    
 }
