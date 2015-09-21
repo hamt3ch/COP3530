@@ -9,7 +9,7 @@
 
 #include <fstream>
 #include <iostream>
-#include "CircularSingleLinkedList_HAM.hpp"
+#include "CircularSingleLinkedList_HAM.h"
 
 int main(int argc, char * argv[]) {
     LinkedList<int>* myList = new LinkedList<int>();
@@ -64,7 +64,7 @@ int main(int argc, char * argv[]) {
 
         else
         {
-            cout << "Unknown Command" << endl;
+            cout << "Error Reading Command" << endl;
         }
 
         numOfCommands--;
