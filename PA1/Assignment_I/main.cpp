@@ -14,11 +14,12 @@
 int main(int argc, char * argv[]) {
     LinkedList<int>* myList = new LinkedList<int>();
 
-    myList->insert(0,1);
+   // myList->insert(0,1);
     myList->print();
-    myList->deleteNode(0);
+
+   // myList->deleteNode(0);
     
-    myList->josephus(1);
+    //myList->josephus(1);
     
 //cout << argv[1] << endl;
     
