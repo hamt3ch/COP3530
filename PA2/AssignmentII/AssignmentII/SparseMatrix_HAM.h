@@ -9,6 +9,7 @@
 #ifndef SparseMatrix_HAM_h
 #define SparseMatrix_HAM_h
 using namespace std;
+#include <vector>
 
 template <class type>
 class Node {
@@ -54,8 +55,9 @@ public:
       }
 
       length++; // increase length
-
     }
+
+
 
     void print() {
       Node<type>* xPtr = head;   // set pointer to head
@@ -66,11 +68,50 @@ public:
     }
 };
 
-// template<class t>
-// class SparseMatrix {
-//     LinkedList* row[3] = {};
-//
-// }
+template<class type>
+class SparseMatrix {
+  public:
+     int numOfRow; // size of matrix
+     int numOfCol;
+     vector<LinkedList<type>>myRow; // array of rows
+
+     SparseMatrix() { // constructor
+         
+     }
+    
+    void read() { // figure out matrix size and elements
+        //read in size of matrix
+        cout << "Enter number of rows, columns" << endl;
+        cin >> numOfRow;
+        cin >> numOfCol;
+        
+        for (int i = 0; i < numOfRow; i++) { // create array or Rows
+            LinkedList<type>* tempList = new LinkedList<type>();
+            myRow.push_back(*tempList);
+        }
+        
+        int elements;
+        for (int i = 0; i < numOfCol; i++) {
+            cout << "Enter number of terms/elements in row" << i << endl;
+            cin >> elements;
+            
+            type value;
+            int rowIndex = i; // i represents the row
+            int colIndex;
+            cout << "Enter element's column, and value of each term in row" << i << endl;
+            for (int j = 0; j < elements; j++) {
+                cin >> colIndex;
+                cin >> value;
+                
+                myRow[i].append(rowIndex,colIndex,value);
+            }
+        }
+    
+        DEBUG;
+        
+    }
+
+};
 
 
 
