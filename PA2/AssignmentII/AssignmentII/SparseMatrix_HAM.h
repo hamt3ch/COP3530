@@ -96,34 +96,44 @@ class SparseMatrix {
         for (int i = 0; i < numOfRow; i++) {
             cout << "Enter number of terms/elements in row" << i << endl;
             cin >> elements;
-            int rowIndex = i; // i represents the row
-            int colIndex;
+            int colIndex; // userTemp Variables
 
             cout << "Enter element's column, and value of each term in row" << i << endl;
             for (int j = 0; j < elements; j++) {
-                  //cin >> colIndex;
-                  //cin >> value;
+                  cin >> value;  // getUserValues()
+                  cin >> colIndex;
                   //create new node to represent a spot in matrix
-                  myRow[i]->append(555, i, j);
+                  myRow[i]->append(colIndex, i+1, value);
                 }
             }
         }
+
       void print() {
-          
           for(int i = 0; i < numOfRow; i++){
               Node<type>* ptrX = myRow[i]->head; // set pointer equal to head
               int count = 0; // set counter
               while (ptrX) {
-                  cout << "[" << ptrX->row << "," << ptrX->col << "]";
+                  cout << "[" << ptrX->row << "," << ptrX->col << "]" << "{" << ptrX->value << "}" << " ";
                   ptrX = ptrX -> nextNode; // move to next Node
               }
-              
               cout << endl;
           }
       }
+
+     void mask(SparseMatrix<type>* valueMatrix, SparseMatrix<type>* boolMatrix){
+       //check rows
+       for (int i = 0; i < valueMatrix->numOfRow; i++){
+         LinkedList<type>* boolList = boolMatrix->myRow[i];
+         LinkedList<type>* valueList = valueMatrix->myRow[i];
+         //compareLinks
+
+       }
+
+
+
+         valueMatrix->print();
+         //return *matrixA;
+      }
   };
-
-
-
 
 #endif /* SparseMatrix_HAM_h */

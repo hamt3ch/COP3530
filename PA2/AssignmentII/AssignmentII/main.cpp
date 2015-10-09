@@ -24,8 +24,14 @@ int main(int argc, const char * argv[]) {
 //    myList->print();
 
 
-    SparseMatrix<int>* myMatrix = new SparseMatrix<int>();
-    myMatrix->read();
-    myMatrix->print();
+    SparseMatrix<int>* valueMatrix = new SparseMatrix<int>();
+    valueMatrix->read();
+    SparseMatrix<int>* boolMatrix = new SparseMatrix<int>();
+    boolMatrix->read();
+
+    // valueMatrix->print();
+    // cout << endl;
+    // boolMatrix->print();
+    //myMatrix->print();
 
 }
