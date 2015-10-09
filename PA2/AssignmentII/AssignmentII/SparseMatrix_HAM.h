@@ -50,8 +50,8 @@ public:
           }
 
           xPtr->nextNode = new Node<type>(value);
-          xPtr->row = row;    // set row and col
-          xPtr->col = col;
+          xPtr->nextNode->row = row;    // set row and col
+          xPtr->nextNode->col = col;
       }
 
       length++; // increase length
@@ -73,45 +73,55 @@ class SparseMatrix {
   public:
      int numOfRow; // size of matrix
      int numOfCol;
-     vector<LinkedList<type>>myRow; // array of rows
+     LinkedList<type>** myRow; // array of rows
 
      SparseMatrix() { // constructor
-         
+
      }
-    
-    void read() { // figure out matrix size and elements
+
+     void read() { // figure out matrix size and elements
         //read in size of matrix
         cout << "Enter number of rows, columns" << endl;
         cin >> numOfRow;
         cin >> numOfCol;
-        
-        for (int i = 0; i < numOfRow; i++) { // create array or Rows
-            LinkedList<type>* tempList = new LinkedList<type>();
-            myRow.push_back(*tempList);
+
+        // create the intial array of LinkedList and tag there col value
+        myRow = new LinkedList<type>*[numOfRow]();
+        for (int i  = 0; i < numOfRow; i++) {
+            myRow[i] = new LinkedList<type>(); // create new list
         }
-        
+
         int elements;
-        for (int i = 0; i < numOfCol; i++) {
+        int value;
+        for (int i = 0; i < numOfRow; i++) {
             cout << "Enter number of terms/elements in row" << i << endl;
             cin >> elements;
-            
-            type value;
             int rowIndex = i; // i represents the row
             int colIndex;
+
             cout << "Enter element's column, and value of each term in row" << i << endl;
             for (int j = 0; j < elements; j++) {
-                cin >> colIndex;
-                cin >> value;
-                
-                myRow[i].append(rowIndex,colIndex,value);
+                  //cin >> colIndex;
+                  //cin >> value;
+                  //create new node to represent a spot in matrix
+                  myRow[i]->append(555, i, j);
+                }
             }
         }
-    
-        DEBUG;
-        
-    }
-
-};
+      void print() {
+          
+          for(int i = 0; i < numOfRow; i++){
+              Node<type>* ptrX = myRow[i]->head; // set pointer equal to head
+              int count = 0; // set counter
+              while (ptrX) {
+                  cout << "[" << ptrX->row << "," << ptrX->col << "]";
+                  ptrX = ptrX -> nextNode; // move to next Node
+              }
+              
+              cout << endl;
+          }
+      }
+  };
 
 
 
