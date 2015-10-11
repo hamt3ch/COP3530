@@ -11,27 +11,24 @@
 //  Copyright © 2015 HAM. All rights reserved.
 //
 
+#include <fstream>
 #include <iostream>
 #include "SparseMatrix_HAM.h"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
 
-//    LinkedList<int>* myList = new LinkedList<int>();
-//    for (int i = 0; i < 10; i++) {
-//        myList->append(i,0,0);
-//    }
-//    myList->print();
-
-
+    SparseMatrix<int>* maskedMatrix = new SparseMatrix<int>();
     SparseMatrix<int>* valueMatrix = new SparseMatrix<int>();
-    valueMatrix->read();
-    SparseMatrix<int>* boolMatrix = new SparseMatrix<int>();
-    boolMatrix->read();
+    SparseMatrix<bool>* boolMatrix = new SparseMatrix<bool>();
 
-    // valueMatrix->print();
-    // cout << endl;
-    // boolMatrix->print();
-    //myMatrix->print();
+    valueMatrix->read(); // MatrixA.read
+
+    valueMatrix->print(); // MatrixA.print
+
+    boolMatrix->read(); // MatrixB.read
+
+    boolMatrix->print(); // MatrixB.print
+
+    valueMatrix->mask(maskedMatrix,boolMatrix);
 
 }
