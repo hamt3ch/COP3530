@@ -8,8 +8,12 @@
 
 #ifndef SparseMatrix_HAM_h
 #define SparseMatrix_HAM_h
+
+#include <stdio.h>
+#include <iostream>
+#include <cstring>
+#include <string>
 using namespace std;
-#include <vector>
 
 template <class type>
 class Node {
@@ -37,7 +41,6 @@ public:
     }
 
     void append(type value, int row, int col) { // append to end of list
-        cout << "In append" << endl;
       if(head == NULL){
         head = new Node<type>(value);  // set initValue
         head->row = row;    // set row and col
@@ -58,12 +61,12 @@ public:
       length++; // increase length
     }
 
-    Node<type>* getNode(int col){    // find node with certain column value
+    Node<type> getNode(int col){    // find node with certain column value
         Node<type>* xPtr = head; // ptr = start of the list
         while (xPtr) {
             if(xPtr->col == col){ //found colNode in this list
                 //return node
-                return xPtr;
+                return *xPtr;
             }
             xPtr = xPtr->nextNode;
         }
@@ -95,10 +98,8 @@ class SparseMatrix {
      void read() { // figure out matrix size and elements
         //read in size of matrix
         cout << "Enter number of rows, columns" << endl;
-//        cin >> numOfRow;
-//        cin >> numOfCol;
-         numOfRow = 3;
-         numOfCol = 3;
+        cin >> numOfRow;
+        cin >> numOfCol;
 
         // create the intial array of LinkedList and tag there col value
         myRow = new LinkedList<type>*[numOfRow]();
@@ -110,8 +111,7 @@ class SparseMatrix {
         int value;
         for (int i = 0; i < numOfRow; i++) {
             cout << "Enter number of terms/elements in row" << i << endl;
-//            cin >> elements;
-            elements = 3;
+            cin >> elements;
             int colIndex; // userTemp Variables
 
             cout << "Enter element's column, and value of each term in row" << i << endl;
@@ -151,14 +151,15 @@ class SparseMatrix {
          //compareLinks
          while(boolPtr){
            if(boolPtr->value){ // rowNode has valuePtr
-               Node<type>* temp = valueList->getNode(boolPtr->col); // find if boolNode is in valueList
+               Node<type> temp = valueList->getNode(boolPtr->col); // find if boolNode is in valueList
+                int tempCol = temp.col; //get values from node
+                int tempVal = temp.value;
 
-            //  cout << "[" << i << "," << temp->col << "]";
-            //  cout << "{" << temp->value << "}";
+              // cout << "[" << i << "," << tempCol << "]";
+              // cout << "{" << tempVal<< "}";
 
              //creates segfault
-             cout << "Hi" << endl;
-             maskedMatrix->myRow[i]->append(temp->value,i,temp->col);
+             maskedMatrix->myRow[i]->append(tempVal,i,tempCol);
 
            }
 
@@ -179,14 +180,13 @@ class SparseMatrix {
         myRow = new LinkedList<int>*[maxRow]();
         numOfRow = maxRow;
         for (int i  = 0; i < numOfRow; i++) {
-            myRow[i] = new LinkedList<type>(); // create new list
-            cout << "Add LinkList to" << i << endl;
+            myRow[i] = new LinkedList<type>(); // create new LinkList
         }
      }
+
    void setColLength(int maxCol){
         numOfCol = maxCol;
      }
-
   };
 
 #endif /* SparseMatrix_HAM_h */
