@@ -154,14 +154,14 @@ class SparseMatrix {
          //compareLinks
          while(boolPtr){
            if(boolPtr->value){ // rowNode has valuePtr
-               Node<type> temp = valueList->getNode(boolPtr->col); // find if boolNode is in valueList
-                int tempCol = temp.col; //get values from node
-                int tempVal = temp.value;
+              Node<type> temp = valueList->getNode(boolPtr->col); // find if boolNode is in valueList
+              int tempCol = temp.col; //get values from node
+              int tempVal = temp.value;
 
              //append value to List
              if(tempVal){
              maskedMatrix->myRow[i]->append(tempVal,i,tempCol);
-           }
+             }
            }
 
             boolPtr = boolPtr->nextNode; // move to nextNode
