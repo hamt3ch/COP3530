@@ -114,6 +114,12 @@ class SparseMatrix {
             cin >> elements;
             int colIndex; // userTemp Variables
 
+            //Hash inputs
+            for(int i = 0; i < elements; i++){
+
+            }
+
+
             cout << "Enter element's column, and value of each term in row" << i << endl;
             for (int j = 0; j < elements; j++) {
                   cin >> value;  // getUserValues()
