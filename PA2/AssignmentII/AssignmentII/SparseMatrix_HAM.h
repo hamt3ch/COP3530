@@ -131,7 +131,6 @@ class SparseMatrix {
               Node<type>* ptrX = myRow[i]->head; // set pointer equal to head
               while (ptrX) {
                   cout << "col:" << ptrX->col << " value = " << ptrX->value;
-                 // cout << "[" << ptrX->row << "," << ptrX->col << "]" << "{" << ptrX->value << "}" << " ";
                   ptrX = ptrX -> nextNode; // move to next Node
                   if(ptrX){ cout << " ,";}
               }
@@ -140,7 +139,6 @@ class SparseMatrix {
       }
 
      void mask(SparseMatrix<type>* maskedMatrix, SparseMatrix<bool>* boolMatrix){
-
        //setup of newMatrix
        maskedMatrix->setRowLength(numOfRow);  //dynamically set MatrixC
        maskedMatrix->setColLength(numOfCol);  
