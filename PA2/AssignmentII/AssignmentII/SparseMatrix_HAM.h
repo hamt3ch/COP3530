@@ -9,11 +9,12 @@
 #ifndef SparseMatrix_HAM_h
 #define SparseMatrix_HAM_h
 
-#include <stdio.h>
 #include <iostream>
 #include <cstring>
 #include <string>
 using namespace std;
+
+#define emptyBucket -1212
 
 template <class type>
 class Node {
@@ -109,48 +110,44 @@ class SparseMatrix {
 
         int elements;
         int value;
+        int colIndex; // userTemp Variables
         for (int i = 0; i < numOfRow; i++) {
             cout << "Enter number of terms/elements in row" << i << endl;
             cin >> elements;
-            int colIndex; // userTemp Variables
 
             //Hash inputs
             int buckets[numOfRow];
-            int hash;
+            for(int i = 0; i < numOfRow; i++){buckets[i] = emptyBucket;} // intialize hash for emptyBuckets
+
+            int hash; // temp hash value
             cout << "Enter element's column, and value of each term in row" << i << endl;
-            for(int j = 0; j < elements; j++){
+            for(int j = 0; j < elements; j++){ // read in userValues
 
                     cin >> colIndex;
                     cin >> value;  // getUserValues()
 
-                    if(colIndex == numOfRow){ // last element in list >> hash = 0
-                        buckets[0] = value;
-                        cout << buckets[hash] << endl;
+                    if(colIndex == 0 || colIndex > numOfRow + 1) {
+                      continue; // skip bad input (col = 0 doesnt exits)
+                    }
+
+                    else if(colIndex == numOfRow){ // last element in list >> hash = 0
+                        buckets[0] = value; // set loop around for hash
                     }
 
                     else if(colIndex < numOfRow){
                         hash = colIndex % numOfRow; // get hashCode
-
                         buckets[hash] = value;  // place in bucket
-                        cout << buckets[hash] << endl;
                     }
                 }
 
-            for(int j = 1; j <= numOfRow; j++) {
-                    myRow[i]->append(buckets[j%numOfRow], i, j); // append values in LL
-            }
+            //add elements to List
+              for(int j = 1; j <= numOfRow; j++) {
+                   if(buckets[j%numOfRow] != emptyBucket) {
+                      myRow[i]->append(buckets[j%numOfRow], i, j); // append values in LL
+                  }
+             }
         }
-
-
-//            cout << "Enter element's column, and value of each term in row" << i << endl;
-//            for (int j = 0; j < elements; j++) {
-//                  cin >> value;  // getUserValues()
-//                  cin >> colIndex;
-//                  //create new node to represent a spot in matrix
-//                  myRow[i]->append(colIndex, i+1, value);
-//                }
-//            }
-        }
+    }
 
       void print() {
           cout << "rows = " << numOfRow << " columns = " << numOfCol << endl;
