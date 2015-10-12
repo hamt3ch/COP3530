@@ -71,7 +71,7 @@ public:
             xPtr = xPtr->nextNode;
         }
 
-        return NULL;
+        return 0; //element not list
     }
 
     void print() {
