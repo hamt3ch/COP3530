@@ -114,12 +114,6 @@ class SparseMatrix {
             cin >> elements;
             int colIndex; // userTemp Variables
 
-            //Hash inputs
-            for(int i = 0; i < elements; i++){
-
-            }
-
-
             cout << "Enter element's column, and value of each term in row" << i << endl;
             for (int j = 0; j < elements; j++) {
                   cin >> value;  // getUserValues()
@@ -139,7 +133,6 @@ class SparseMatrix {
               }
               cout << endl;
           }
-          cout << endl;
       }
 
      void mask(SparseMatrix<type>* maskedMatrix, SparseMatrix<bool>* boolMatrix){
@@ -170,14 +163,8 @@ class SparseMatrix {
            }
 
             boolPtr = boolPtr->nextNode;
-
          }
-
-           cout << endl;
        }
-
-       maskedMatrix->print(); // print new matrix
-
      }
 
 //Dynamic Functions

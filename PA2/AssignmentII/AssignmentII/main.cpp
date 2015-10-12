@@ -1,8 +1,3 @@
-
-
-
-
-
 //
 //  main.cpp
 //  AssignmentII
@@ -16,19 +11,27 @@
 #include "SparseMatrix_HAM.h"
 
 int main(int argc, const char * argv[]) {
-
-    SparseMatrix<int>* maskedMatrix = new SparseMatrix<int>();
-    SparseMatrix<int>* valueMatrix = new SparseMatrix<int>();
-    SparseMatrix<bool>* boolMatrix = new SparseMatrix<bool>();
-
+	
+	SparseMatrix<int>* valueMatrix = new SparseMatrix<int>(); // MatrixA
+    SparseMatrix<bool>* boolMatrix = new SparseMatrix<bool>(); //MatrixB
+    SparseMatrix<int>* maskedMatrix = new SparseMatrix<int>(); // MatrixC
+    
+    cout << "Reading Matrix A" << endl;
     valueMatrix->read(); // MatrixA.read
 
+    cout << "Matrix A, result:" << endl;
     valueMatrix->print(); // MatrixA.print
 
+    cout << "Reading Matrix B" << endl;
     boolMatrix->read(); // MatrixB.read
 
+    cout << "Matrix B, result:" << endl;
     boolMatrix->print(); // MatrixB.print
 
+    //Masking
     valueMatrix->mask(maskedMatrix,boolMatrix);
+
+    cout << "Matrix C, result:" << endl;
+    maskedMatrix->print(); // print matrix
 
 }
