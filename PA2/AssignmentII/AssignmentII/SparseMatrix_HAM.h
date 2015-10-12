@@ -125,24 +125,28 @@ class SparseMatrix {
         }
 
       void print() {
+          cout << "rows = " << numOfRow << " columns = " << numOfCol << endl;
           for(int i = 0; i < numOfRow; i++){
+              cout << "row " << i+1 << "[";
               Node<type>* ptrX = myRow[i]->head; // set pointer equal to head
               while (ptrX) {
-                  cout << "[" << ptrX->row << "," << ptrX->col << "]" << "{" << ptrX->value << "}" << " ";
+                  cout << "col:" << ptrX->col << " value = " << ptrX->value;
+                 // cout << "[" << ptrX->row << "," << ptrX->col << "]" << "{" << ptrX->value << "}" << " ";
                   ptrX = ptrX -> nextNode; // move to next Node
+                  if(ptrX){ cout << " ,";}
               }
-              cout << endl;
+              cout << "]" << endl;
           }
       }
 
      void mask(SparseMatrix<type>* maskedMatrix, SparseMatrix<bool>* boolMatrix){
 
        //setup of newMatrix
-       maskedMatrix->setRowLength(numOfRow);
-       maskedMatrix->setColLength(numOfCol);
+       maskedMatrix->setRowLength(numOfRow);  //dynamically set MatrixC
+       maskedMatrix->setColLength(numOfCol);  
 
        for (int i = 0; i < numOfRow; i++){
-         LinkedList<bool>* boolList = boolMatrix->myRow[i];
+         LinkedList<bool>* boolList = boolMatrix->myRow[i]; //set pointers for comparison
          LinkedList<type>* valueList = myRow[i];
          Node<bool>* boolPtr = boolList->head;
          Node<type>* valuePtr = valueList->head;
@@ -154,15 +158,12 @@ class SparseMatrix {
                 int tempCol = temp.col; //get values from node
                 int tempVal = temp.value;
 
-              // cout << "[" << i << "," << tempCol << "]";
-              // cout << "{" << tempVal<< "}";
-
-             //creates segfault
+             //append value to List
              maskedMatrix->myRow[i]->append(tempVal,i,tempCol);
 
            }
 
-            boolPtr = boolPtr->nextNode;
+            boolPtr = boolPtr->nextNode; // move to nextNode
          }
        }
      }
