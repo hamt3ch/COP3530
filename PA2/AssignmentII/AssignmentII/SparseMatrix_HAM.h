@@ -159,8 +159,9 @@ class SparseMatrix {
                 int tempVal = temp.value;
 
              //append value to List
+             if(tempVal){
              maskedMatrix->myRow[i]->append(tempVal,i,tempCol);
-
+           }
            }
 
             boolPtr = boolPtr->nextNode; // move to nextNode
