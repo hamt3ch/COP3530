@@ -124,15 +124,15 @@ class SparseMatrix {
         int value;
         int colIndex; // userTemp Variables
         for (int i = 0; i < numOfRow; i++) {
-            cout << "Enter number of terms/elements in row" << i << endl;
+            cout << "Enter number of terms/elements in row " << i+1 << endl;
             cin >> elements;
 
             //Hash inputs
             int buckets[numOfCol];
-            for(int i = 0; i < numOfCol; i++){buckets[i] = emptyBucket;} // intialize hash for emptyBuckets
+            for(int k = 0; k < numOfCol; k++){buckets[k] = emptyBucket;} // intialize hash for emptyBuckets
 
             int hash; // temp hash value
-            cout << "Enter element's column, and value of each term in row" << i << endl;
+            cout << "Enter element's column, and value of each term in row" << i+1 << endl;
             for(int j = 0; j < elements; j++){ // read in userValues
 
                     cin >> colIndex;
