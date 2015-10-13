@@ -75,6 +75,18 @@ public:
         return 0; //element not list
     }
 
+    Node<type> getNode(int col, Node<type>* startingPoint){    // find node with certain column value
+        Node<type>* xPtr = startingPoint; // ptr = start of the list
+        do {
+            if(xPtr->col == col){ //found colNode in this list
+                //return node
+                return *xPtr; // return new location
+            }
+            xPtr = xPtr->nextNode;
+        } while (xPtr);
+        return *startingPoint; //return startingPointer
+      }
+
     void print() {
       Node<type>* xPtr = head;   // set pointer to head
       while (xPtr->nextNode) { // find lastNode
@@ -116,8 +128,8 @@ class SparseMatrix {
             cin >> elements;
 
             //Hash inputs
-            int buckets[numOfRow];
-            for(int i = 0; i < numOfRow; i++){buckets[i] = emptyBucket;} // intialize hash for emptyBuckets
+            int buckets[numOfCol];
+            for(int i = 0; i < numOfCol; i++){buckets[i] = emptyBucket;} // intialize hash for emptyBuckets
 
             int hash; // temp hash value
             cout << "Enter element's column, and value of each term in row" << i << endl;
@@ -126,24 +138,24 @@ class SparseMatrix {
                     cin >> colIndex;
                     cin >> value;  // getUserValues()
 
-                    if(colIndex == 0 || colIndex > numOfRow + 1) {
+                    if(colIndex == 0 || colIndex > numOfCol + 1) {
                       continue; // skip bad input (col = 0 doesnt exits)
                     }
 
-                    else if(colIndex == numOfRow){ // last element in list >> hash = 0
+                    else if(colIndex == numOfCol){ // last element in list >> hash = 0
                         buckets[0] = value; // set loop around for hash
                     }
 
-                    else if(colIndex < numOfRow){
-                        hash = colIndex % numOfRow; // get hashCode
+                    else if(colIndex < numOfCol){
+                        hash = colIndex % numOfCol; // get hashCode
                         buckets[hash] = value;  // place in bucket
                     }
                 }
 
             //add elements to List
-              for(int j = 1; j <= numOfRow; j++) {
-                   if(buckets[j%numOfRow] != emptyBucket) {
-                      myRow[i]->append(buckets[j%numOfRow], i, j); // append values in LL
+              for(int j = 1; j <= numOfCol; j++) {
+                   if(buckets[j%numOfCol] != emptyBucket) {
+                      myRow[i]->append(buckets[j%numOfCol], i, j); // append values in LL
                   }
              }
         }
@@ -177,13 +189,16 @@ class SparseMatrix {
          //compareLinks
          while(boolPtr){
            if(boolPtr->value){ // rowNode has valuePtr
-              Node<type> temp = valueList->getNode(boolPtr->col); // find if boolNode is in valueList
+              //Node<type> temp = valueList->getNode(boolPtr->col); // find if boolNode is in valueList
+              int saveCol = valuePtr->col;
+              Node<type> temp = valueList->getNode(boolPtr->col, valuePtr);
               int tempCol = temp.col; //get values from node
               int tempVal = temp.value;
 
              //append value to List
-             if(tempVal){
-             maskedMatrix->myRow[i]->append(tempVal,i,tempCol);
+             if(boolPtr->col == tempCol && tempVal){
+               maskedMatrix->myRow[i]->append(tempVal,i,tempCol);
+               valuePtr = temp.nextNode;
              }
            }
 
