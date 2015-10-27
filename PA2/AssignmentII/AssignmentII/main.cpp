@@ -1,8 +1,3 @@
-
-
-
-
-
 //
 //  main.cpp
 //  AssignmentII
