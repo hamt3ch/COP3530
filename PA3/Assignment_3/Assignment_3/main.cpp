@@ -7,9 +7,14 @@
 //
 
 #include <iostream>
+#include "minHeap_HAM.h"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    return 0;
+
+    arrayHeap* myHeap = new arrayHeap(10);
+    for(int i = 10; i > 0; i--){
+        myHeap->push(i);
+    }
+
+    myHeap->print();
 }

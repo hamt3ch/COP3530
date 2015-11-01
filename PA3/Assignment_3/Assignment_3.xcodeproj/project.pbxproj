@@ -23,9 +23,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A82EBE221BDF3CCF00CF8CB3 /* minHeap_HAM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = minHeap_HAM.h; sourceTree = "<group>"; };
 		A833B5001BDADDDB006541C8 /* Assignment_3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Assignment_3; sourceTree = BUILT_PRODUCTS_DIR; };
 		A833B5031BDADDDB006541C8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		A833B50C1BDD487F006541C8 /* minHeap_HAM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = minHeap_HAM.h; path = ../minHeap_HAM.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +58,7 @@
 		A833B5021BDADDDB006541C8 /* Assignment_3 */ = {
 			isa = PBXGroup;
 			children = (
-				A833B50C1BDD487F006541C8 /* minHeap_HAM.h */,
+				A82EBE221BDF3CCF00CF8CB3 /* minHeap_HAM.h */,
 				A833B5031BDADDDB006541C8 /* main.cpp */,
 			);
 			path = Assignment_3;
