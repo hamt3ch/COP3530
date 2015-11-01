@@ -11,6 +11,7 @@
 
 #include <math.h>
 using namespace std;
+#define empty -1
 
 template <class type>
 class Node {
@@ -45,7 +46,7 @@ public:
         //make recursive call here to the heap
         compare(getParent(curIndex), curIndex);// swap values
 
-        length++;
+        length++; // increase length
     }
 
     //recursive sort for insert
@@ -63,6 +64,28 @@ public:
         }
     }
 
+    //fix head after a pop
+    void reAlign(int parentIndex) {
+        //check leftChild
+        if(heap[parentIndex] > heap[getLeft(parentIndex)] && getLeft(parentIndex) < length){
+            //swap values
+            swap(parentIndex, getLeft(parentIndex));
+
+            //check nodes below it
+            reAlign(getLeft(parentIndex));
+        }
+
+        //check rightChild
+        if(heap[parentIndex] > heap[getRight(parentIndex)] && getRight(parentIndex) < length){
+            //swap values
+            swap(parentIndex, getRight(parentIndex));
+         //   print();
+
+            //check nodes below it
+            reAlign(getRight(parentIndex));
+        }
+    }
+
     //get minValue from heap
     int top(){
         return heap[0]; // return firstElement list >> minValue
@@ -70,6 +93,20 @@ public:
 
     //remove minValue from heap
     void pop(){
+        //pull off top value
+        heap[0] = empty;
+      //  print();
+        //take last value in heap an put it at the top
+        swap(0, length - 1);
+        //print();
+
+        //decrease length
+        length--;
+
+        //compare with nodes below it
+        reAlign(0);
+
+
 
     }
 
@@ -81,6 +118,11 @@ public:
         else {
             return false;
         }
+    }
+
+    //get length
+    int getLength(){
+        return length;
     }
 
     void print(){
@@ -95,26 +137,29 @@ public:
                 }
                 cout << " " << heap[i] << " ";
                 i++;
+                curlen--;
 
             }
             cout << endl;
             for(int j = 0; j < prints; j++){
                 cout << " /" << "\\ " ;
             }
-            curlen -= prints;
+            //curlen -= prints;
             cout << endl; // break
         }
+
+        cout << "----------" << endl;
     }
 
 private:
     //getRightChild of current parent index
     int getRight(int index){
-        return 2*index + 1; // represents leftChild
+        return 2*index + 2; // represents leftChild
     }
 
     //getLeftChild of current parent index
     int getLeft(int index){
-        return 2*index + 2; // represents rightChild
+        return 2*index + 1; // represents rightChild
     }
 
     //getParent of currentChild index

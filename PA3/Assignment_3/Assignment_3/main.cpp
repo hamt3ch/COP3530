@@ -14,7 +14,28 @@ int main(int argc, const char * argv[]) {
     arrayHeap* myHeap = new arrayHeap(10);
     for(int i = 10; i > 0; i--){
         myHeap->push(i);
+        myHeap->print();
+    }
+    
+    //check heap
+    int test[myHeap->getLength()];
+    for (int i = 0; i < myHeap->getLength(); i++) {
+        if(test[i] > test[i+1]){
+            cout << "Heap is not correct at " << i << endl;
+            break;
+        }
     }
 
-    myHeap->print();
+    
+    for (int i = 0; i < 10; i++) {
+        test[i] = myHeap->top();
+        myHeap->pop();
+        myHeap->print();
+    }
+
+  
+
+
+
+
 }
