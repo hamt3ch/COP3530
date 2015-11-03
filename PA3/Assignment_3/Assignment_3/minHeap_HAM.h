@@ -182,7 +182,7 @@ class treeHeap {
 public:
     // constructor
     treeHeap(){
-    root = NULL;
+    //root = NULL;
 
     //testing
        //lvl1
@@ -191,7 +191,7 @@ public:
        root->leftChild = new Node<type>(2);
 
        //lvl2
-       root->rightChild->rightChild = new Node<type>(7);
+       root->rightChild->rightChild = new Node<type>(10);
        root->rightChild->leftChild = new Node<type>(6);
 
        root->leftChild->rightChild = new Node<type>(5);
@@ -205,8 +205,16 @@ public:
             root = new Node<type>(value);
         }
 
+        else if(root->value > value) { // root < value
+            Node<type>* saveOldRoot = root; //save old tree
+            root = new Node<type>(value);    // create newRoot
+            root->leftChild = saveOldRoot; // place old Tree as right Node
+        }
+
         else {
             //meld both currentTree w/ new Node
+                Node<type>* toPush = new Node<type>(value);
+                meld(root, toPush);
         }
     }
 
@@ -225,8 +233,33 @@ public:
     }
 
 private:
-    void meld(treeHeap<type>* current, treeHeap<type>* toMeld){
+    void meld(Node<type>* currentRoot, Node<type>* toMeld){
+        Node<type>* ptrX = currentRoot;
 
+        //compare Node.values
+        Node<type>* myParent; //saves parentNode when looking for spot to meld
+        while(ptrX->value <= toMeld->value){ // traverse right side tree
+            myParent = ptrX;
+            ptrX = ptrX->rightChild;
+            if(!ptrX){
+                break;
+            }
+        }
+
+        //place nodeHere
+        myParent->rightChild = toMeld;
+
+        //checkRank and see if a swap is need (leftist)
+
+
+        if(ptrX == NULL){ //the tree is complete
+            return;
+        }
+
+        else {
+            //call meld on detached node
+            meld(root,ptrX);
+        }
     }
 
     void postOrder(Node<type>* root, int level = 0){
@@ -245,8 +278,10 @@ private:
     }
 
     void lvlOrder(Node<type>* root, int level){
-        if(root == NULL)
-        return;
+        if(root == NULL){
+        cout << "- ";
+            return;
+        }
 
         if(level == 1)
         cout << root->value << " ";

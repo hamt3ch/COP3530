@@ -19,24 +19,25 @@ int main(int argc, const char * argv[]) {
 
     cout << "Tree" << endl;
     treeHeap<int>* myTree = new treeHeap<int>();
+    myTree->push(10);
     myTree->print();
 
-    cout << "Array" << endl;
-    myHeap->print();
+    // cout << "Array" << endl;
+    // myHeap->print();
 
 
     //Testing Priority Queue
-    int test[10];
-    for(int i = 0; i < 10; i++){
-        test[i] = myHeap->top();
-        cout << test[i] << " ";
-        myHeap->pop();
-    }
-
-    for(int i = 0; i < 10; i++){
-        if(test[i] > test[i+1] && i + 1 != 10){
-            cout << "order is messed up at index" << i << endl;
-        }
-    }
+    // int test[10];
+    // for(int i = 0; i < 10; i++){
+    //     test[i] = myHeap->top();
+    //     cout << test[i] << " ";
+    //     myHeap->pop();
+    // }
+    //
+    // for(int i = 0; i < 10; i++){
+    //     if(test[i] > test[i+1] && i + 1 != 10){
+    //         cout << "order is messed up at index" << i << endl;
+    //     }
+    // }
 
 }
