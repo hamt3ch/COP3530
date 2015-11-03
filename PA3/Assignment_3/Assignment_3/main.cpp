@@ -7,35 +7,36 @@
 //
 
 #include <iostream>
+#include <math.h>
 #include "minHeap_HAM.h"
 
 int main(int argc, const char * argv[]) {
 
     arrayHeap* myHeap = new arrayHeap(10);
     for(int i = 10; i > 0; i--){
-        myHeap->push(i);
-        myHeap->print();
+        myHeap->push(rand() % 100);
     }
-    
-    //check heap
-    int test[myHeap->getLength()];
-    for (int i = 0; i < myHeap->getLength(); i++) {
-        if(test[i] > test[i+1]){
-            cout << "Heap is not correct at " << i << endl;
-            break;
+
+    cout << "Tree" << endl;
+    treeHeap<int>* myTree = new treeHeap<int>();
+    myTree->print();
+
+    cout << "Array" << endl;
+    myHeap->print();
+
+
+    //Testing Priority Queue
+    int test[10];
+    for(int i = 0; i < 10; i++){
+        test[i] = myHeap->top();
+        cout << test[i] << " ";
+        myHeap->pop();
+    }
+
+    for(int i = 0; i < 10; i++){
+        if(test[i] > test[i+1] && i + 1 != 10){
+            cout << "order is messed up at index" << i << endl;
         }
     }
-
-    
-    for (int i = 0; i < 10; i++) {
-        test[i] = myHeap->top();
-        myHeap->pop();
-        myHeap->print();
-    }
-
-  
-
-
-
 
 }

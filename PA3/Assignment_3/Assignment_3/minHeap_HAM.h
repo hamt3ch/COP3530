@@ -9,22 +9,8 @@
 #ifndef minHeap_HAM_h
 #define minHeap_HAM_h
 
-#include <math.h>
 using namespace std;
 #define empty -1
-
-template <class type>
-class Node {
-public:
-    type value;
-    Node* rightChild;
-    Node* leftChild;
-
-    //constructor
-    Node(int initVal) {
-        value = initVal;
-    }
-};
 
 class arrayHeap {
     int length; // number of elements
@@ -105,9 +91,6 @@ public:
 
         //compare with nodes below it
         reAlign(0);
-
-
-
     }
 
     //is the heap empty?
@@ -121,7 +104,7 @@ public:
     }
 
     //get length
-    int getLength(){
+    int size(){
         return length;
     }
 
@@ -149,7 +132,7 @@ public:
         }
 
         cout << "----------" << endl;
-    }
+        }
 
 private:
     //getRightChild of current parent index
@@ -176,28 +159,119 @@ private:
 
 };
 
-class treeHeap {
+template <class type>
+class Node {
+public:
+    type value;
+    Node<type>* rightChild;
+    Node<type>* leftChild;
 
-    bool isEmpty;
-    int size;
-   // Node** heap; // array of rows
+    //constructor
+    Node(type initVal) {
+        value = initVal;
+        rightChild = NULL;
+        leftChild = NULL;
+    }
+};
+
+template <class type>
+class treeHeap {
+    Node<type>* root;
+    int length;
 
 public:
     // constructor
-    treeHeap(int size){
-    //    heap = new Node*[size](); // instantiate heap
+    treeHeap(){
+    root = NULL;
+
+    //testing
+       //lvl1
+       root = new Node<type>(1);
+       root->rightChild = new Node<type>(3);
+       root->leftChild = new Node<type>(2);
+
+       //lvl2
+       root->rightChild->rightChild = new Node<type>(7);
+       root->rightChild->leftChild = new Node<type>(6);
+
+       root->leftChild->rightChild = new Node<type>(5);
+       root->leftChild->leftChild = new Node<type>(4);
     }
 
+    //add value to heap
     void push(int value){
+        if(root == NULL){
+            //create a root
+            root = new Node<type>(value);
+        }
 
-    }
-
-    void top(){
-
+        else {
+            //meld both currentTree w/ new Node
+        }
     }
 
     void pop(){
 
+    }
+
+    void print() {
+        //breadth-First Search
+        int h = getHeight(root);
+        int i;
+        for(i=1; i<=h; i++) {
+            lvlOrder(root, i);
+            cout << endl;
+        }
+    }
+
+private:
+    void meld(treeHeap<type>* current, treeHeap<type>* toMeld){
+
+    }
+
+    void postOrder(Node<type>* root, int level = 0){
+        cout<< "lvl: " << level<< " " <<root->value << "\n";
+        if(root != NULL){
+            if(root->leftChild){
+                cout << "left" << endl;
+                postOrder(root->leftChild, level + 1);
+            }
+
+            if(root->rightChild){
+                cout << "right" << endl;
+                postOrder(root->rightChild, level + 1);
+            }
+        }
+    }
+
+    void lvlOrder(Node<type>* root, int level){
+        if(root == NULL)
+        return;
+
+        if(level == 1)
+        cout << root->value << " ";
+
+        else if (level > 1)
+        {
+            lvlOrder(root->leftChild, level-1);
+            lvlOrder(root->rightChild, level-1);
+        }
+    }
+
+    int getHeight(Node<type>* node){
+        if (node == NULL)
+        return 0;
+        else
+        {
+            /* compute the height of each subtree */
+            int lheight = getHeight(node->leftChild);
+            int rheight = getHeight(node->rightChild);
+
+            /* use the larger one */
+            if (lheight > rheight)
+            return(lheight+1);
+            else return(rheight+1);
+        }
     }
 };
 
