@@ -191,11 +191,25 @@ public:
        root->leftChild = new Node<type>(2);
 
        //lvl2
-       root->rightChild->rightChild = new Node<type>(10);
+       root->rightChild->rightChild = new Node<type>(7);
        root->rightChild->leftChild = new Node<type>(6);
 
        root->leftChild->rightChild = new Node<type>(5);
        root->leftChild->leftChild = new Node<type>(4);
+
+       //lvl3
+       root->rightChild->rightChild->rightChild = new Node<type>(15);
+       root->rightChild->rightChild->leftChild = new Node<type>(14);
+
+       root->rightChild->leftChild->rightChild = new Node<type>(13);
+       root->rightChild->leftChild->leftChild = new Node<type>(12);
+
+       root->leftChild->rightChild->rightChild = new Node<type>(11);
+       root->leftChild->rightChild->leftChild = new Node<type>(10);
+
+       root->leftChild->leftChild->rightChild = new Node<type>(9);
+       root->leftChild->leftChild->leftChild = new Node<type>(8);
+
     }
 
     //add value to heap
@@ -250,7 +264,7 @@ private:
         myParent->rightChild = toMeld;
 
         //checkRank and see if a swap is need (leftist)
-
+        //checkRank(root)
 
         if(ptrX == NULL){ //the tree is complete
             return;
@@ -260,6 +274,38 @@ private:
             //call meld on detached node
             meld(root,ptrX);
         }
+    }
+
+    void checkRanks(Node<type>* root){ // checks if the currentChildren are in right order
+        //rank(L) > rank(R)
+        if(getRank(root->leftChild) > getRank(root->rightChild)){
+            //swap the Nodes
+        }
+
+        else{
+
+        }
+
+    }
+
+    int getRank(Node<type>* node){
+        if(node){ // part of tree
+            if(node->rightChild && node->leftChild){
+                int leftRank = getRank(node->leftChild); // getChildrenRank
+                int rightRank = getRank(node->rightChild);
+                int childrenRank = (leftRank > rightRank) ? leftRank : rightRank;
+                return 1 + childrenRank;
+            }
+
+            else { // this node is connected to a null
+                return 0;
+            }
+        }
+
+        else {
+            return 0;
+        }
+
     }
 
     void postOrder(Node<type>* root, int level = 0){
@@ -279,12 +325,15 @@ private:
 
     void lvlOrder(Node<type>* root, int level){
         if(root == NULL){
-        cout << "- ";
+        cout << " - ";
             return;
         }
 
-        if(level == 1)
-        cout << root->value << " ";
+        if(level == 1){
+        cout << "[" << root->value << "]" << " ";
+        //int rank = getRank(root);
+        //cout << "r: " << rank << " ";
+        }
 
         else if (level > 1)
         {

@@ -19,7 +19,7 @@ int main(int argc, const char * argv[]) {
 
     cout << "Tree" << endl;
     treeHeap<int>* myTree = new treeHeap<int>();
-    myTree->push(10);
+    //myTree->push(10);
     myTree->print();
 
     // cout << "Array" << endl;
