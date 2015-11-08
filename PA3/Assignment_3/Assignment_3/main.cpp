@@ -12,32 +12,47 @@
 
 int main(int argc, const char * argv[]) {
 
-    arrayHeap* myHeap = new arrayHeap(10);
-    for(int i = 10; i > 0; i--){
-        myHeap->push(rand() % 100);
-    }
+//    cout << "Array" << endl;
+//    arrayHeap* myHeap = new arrayHeap(10);
+//    for(int i = 10; i > 0; i--){
+//        myHeap->push(rand() % 100);
+//    }
 
     cout << "Tree" << endl;
     treeHeap<int>* myTree = new treeHeap<int>();
-    //myTree->push(10);
-    myTree->print();
+    for(int i = 0; i < 10; i++){
+        myTree->push(rand() % 100);
+        myTree->print();
+        cout << "----------" << endl;
+    }
+
+    // for (int i = 0; i < 10; i++){
+    //     cout << myTree->top() << endl;
+    //     myTree->pop();
+    //     myTree->print();
+    // }
+
+   // myTree->print();
+
+
+    //cout << myTree->top();
 
     // cout << "Array" << endl;
     // myHeap->print();
 
 
     //Testing Priority Queue
-    // int test[10];
-    // for(int i = 0; i < 10; i++){
-    //     test[i] = myHeap->top();
-    //     cout << test[i] << " ";
-    //     myHeap->pop();
-    // }
-    //
-    // for(int i = 0; i < 10; i++){
-    //     if(test[i] > test[i+1] && i + 1 != 10){
-    //         cout << "order is messed up at index" << i << endl;
-    //     }
-    // }
+    int test[10];
+    for(int i = 0; i < 10; i++){
+        test[i] = myTree->top();
+        cout << test[i] << " ";
+        myTree->pop();
+    }
+
+    for(int i = 0; i < 10; i++){
+        if(test[i] > test[i+1] && i + 1 != 10){
+            cout << "order is messed up at index" << i << endl;
+        }
+    }
 
 }
