@@ -6,6 +6,7 @@
 //  Copyright © 2015 HAM. All rights reserved.
 //
 
+#include <ctime>
 #include <iostream>
 #include <math.h>
 #include "minHeap_HAM.h"
@@ -37,6 +38,7 @@ int main(int argc, const char * argv[]) {
     treeHeap<Machine*> tree = *new ::treeHeap<Machine*>();
 
     //Array Heap
+    clock_t start = clock();
     for (int i = 0; i < numOfMachines; i++){ //create machines
         Machine* t = new Machine(numOfJobs); // create new Machine
         array->push(t); // push newMachine in Heap
@@ -48,14 +50,19 @@ int main(int argc, const char * argv[]) {
         array->pop(); //pop it off
         array->push(readyToWork); // push it back in
     }
-    
+  
     cout << "Min Heap Finshing Time: " << array->getMax() << endl;
     cout << "Schedule:" << endl;
     array->print();
-    cout << "Time Elapsed: " << endl;
+    
+    clock_t end = clock();
+    float time =  (float) (end-start) / CLOCKS_PER_SEC;
+    
+    cout << "Time Elapsed: " << time << endl;
     cout << endl;
     
     //HeightBiased Leftist Tree
+    start = clock();
     for (int i = 0; i < numOfMachines; i++){ //create machines
         Machine* t = new Machine(numOfJobs); // create new Machine
         tree.push(t); // push newMachine in Heap
@@ -99,7 +106,11 @@ int main(int argc, const char * argv[]) {
         tree.push(readyToWork); // push it back in
     }
     
-    cout << "Time Elapsed: " << endl;
+    end = clock();
+    
+    time =  (float) (end-start) / CLOCKS_PER_SEC;
+    
+    cout << "Time Elapsed: " << time << endl;
 
 }
 
