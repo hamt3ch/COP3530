@@ -326,7 +326,6 @@ public:
         type value;
         Node<type>* rightChild;
         Node<type>* leftChild;
-        Machine* machine;
 
         //constructor
         Node(type initVal) {
@@ -346,54 +345,93 @@ public:
         treeHeap(){
             root = NULL;
 
+
             //testing
-            //lvl1
-            // root = new Node<type>(1);
-            // root->rightChild = new Node<type>(3);
-            // root->leftChild = new Node<type>(2);
-            //
-            // //lvl2
-            // root->rightChild->rightChild = new Node<type>(7);
-            // root->rightChild->leftChild = new Node<type>(6);
-            //
-            // root->leftChild->rightChild = new Node<type>(5);
-            // root->leftChild->leftChild = new Node<type>(4);
-            //
-            // //lvl3
-            // root->rightChild->rightChild->rightChild = new Node<type>(15);
-            // root->rightChild->rightChild->leftChild = new Node<type>(14);
-            //
-            // root->rightChild->leftChild->rightChild = new Node<type>(13);
-            // root->rightChild->leftChild->leftChild = new Node<type>(12);
-            //
-            // root->leftChild->rightChild->rightChild = new Node<type>(11);
-            // root->leftChild->rightChild->leftChild = new Node<type>(10);
-            //
-            // root->leftChild->leftChild->rightChild = new Node<type>(9);
-            // root->leftChild->leftChild->leftChild = new Node<type>(8);
+//            //lvl1
+//            root = new Node<type>(new Machine(10));
+//            root->value->insert(1);
+//
+//            root->rightChild = new Node<type>(new Machine(10));
+//            root->rightChild->value->insert(3);
+//
+//            root->leftChild = new Node<type>(new Machine(10));
+//            root->leftChild->value->insert(2);
+//
+//            //lvl2
+//            root->rightChild->rightChild = new Node<type>(new Machine(10));
+//            root->rightChild->rightChild->value->insert(7);
+//
+//            root->rightChild->leftChild = new Node<type>(new Machine(10));
+//            root->rightChild->leftChild->value->insert(6);
+//
+//            root->leftChild->rightChild = new Node<type>(new Machine(10));
+//            root->leftChild->rightChild->value->insert(5);
+//            root->leftChild->leftChild = new Node<type>(new Machine(10));
+//            root->leftChild->leftChild->value->insert(4);
+//
+//            //lvl3
+//            root->rightChild->rightChild->rightChild = new Node<type>(new Machine(10));
+//            root->rightChild->rightChild->rightChild->value->insert(15);
+//            root->rightChild->rightChild->leftChild = new Node<type>(new Machine(10));
+//            root->rightChild->rightChild->leftChild->value->insert(14);
+//
+//            root->rightChild->leftChild->rightChild = new Node<type>(new Machine(10));
+//            root->rightChild->leftChild->rightChild->value->insert(13);
+//            root->rightChild->leftChild->leftChild = new Node<type>(new Machine(10));
+//            root->rightChild->leftChild->leftChild->value->insert(12);
+//
+//            root->leftChild->rightChild->rightChild = new Node<type>(new Machine(10));
+//            root->leftChild->rightChild->rightChild->value->insert(11);
+//            root->leftChild->rightChild->leftChild = new Node<type>(new Machine(10));
+//            root->leftChild->rightChild->leftChild->value->insert(10);
+//
+//            root->leftChild->leftChild->rightChild = new Node<type>(new Machine(10));
+//            root->leftChild->leftChild->rightChild->value->insert(9);
+//            root->leftChild->leftChild->leftChild = new Node<type>(new Machine(10));
+//            root->leftChild->leftChild->leftChild->value->insert(8);
 
         }
 
         //add value to heap
-        void push(type value){
+    //     void push(type value){
+    //
+    //     if(root == NULL){
+    //             //create a root
+    //             root = new Node<type>(value);
+    //         }
+    //
+    //     else if(root->value > value) { // root < value
+    //             Node<type>* saveOldRoot = root; //save old tree
+    //             root = new Node<type>(value);    // create newRoot
+    //             root->leftChild = saveOldRoot; // place old Tree as right Node
+    //         }
+    //
+    //     else {
+    //         //meld both currentTree w/ new Node
+    //         Node<type>* toPush = new Node<type>(value);
+    //         meld(root, toPush);
+    //     }
+    // }
 
-        if(root == NULL){
-                //create a root
-                root = new Node<type>(value);
-            }
+    void push(type value){
 
-        else if(root->value > value) { // root < value
-                Node<type>* saveOldRoot = root; //save old tree
-                root = new Node<type>(value);    // create newRoot
-                root->leftChild = saveOldRoot; // place old Tree as right Node
-            }
-
-        else {
-            //meld both currentTree w/ new Node
-            Node<type>* toPush = new Node<type>(value);
-            meld(root, toPush);
+    if(root == NULL){
+            //create a root
+            root = new Node<type>(value);
         }
+
+    else if(root->value->sum > value->sum) { // root < value
+            Node<type>* saveOldRoot = root; //save old tree
+            root = new Node<type>(value);    // create newRoot
+            root->leftChild = saveOldRoot; // place old Tree as right Node
+        }
+
+    else {
+        //meld both currentTree w/ new Node
+        Node<type>* toPush = new Node<type>(value);
+        meld(root, toPush);
     }
+}
 
     void pop(){
         Node<type>* toDelete = root;
@@ -405,7 +443,7 @@ public:
             //root children exist
             if(curRight && curLeft){
                 //check which is lest and set as root then meld
-                if(root->rightChild->value > root->leftChild->value){
+                if(root->rightChild->value->sum > root->leftChild->value->sum){
                     root = curLeft;
                     meld(root,curRight);
                 }
@@ -463,7 +501,7 @@ private:
 
         //compare Node.values
         Node <type>* myParent; //saves parentNode when looking for spot to meld
-        while(ptrX->value <= toMeld->value){ // traverse right side tree
+        while(ptrX->value->sum <= toMeld->value->sum){ // traverse right side tree
         myParent = ptrX;
         ptrX = ptrX->rightChild;
             if (!ptrX){
@@ -490,9 +528,6 @@ private:
     void checkRanks(Node<type>* root){ // checks if the currentChildren are in right order
         if(root){
             //rank(L) > rank(R)
-//            cout << "Value" << root->value << endl;
-//            cout << "Left Child:" << getRank(root->leftChild) << endl;
-//            cout << "Right Child:" << getRank(root->rightChild) << endl;
             if(getRank(root->leftChild) < getRank(root->rightChild)){
                 //swap the Nodes
                 swap(root);
@@ -539,9 +574,7 @@ private:
         }
 
         if(level == 1){
-            cout << "[" << root->value << "]" << " ";
-            //int rank = getRank(root);
-            //cout << "r: " << rank << " ";
+            cout << "[" << root->value->sum << "]" << " ";
         }
 
         else if (level > 1)

@@ -265,70 +265,6 @@
             timestampString = "468738441.363071"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "356"
-            endingLineNumber = "356"
-            landmarkName = "treeHeap()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Assignment_3/minHeap_HAM.h"
-            timestampString = "468738441.363071"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "355"
-            endingLineNumber = "355"
-            landmarkName = "treeHeap()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Assignment_3/minHeap_HAM.h"
-            timestampString = "468738441.363071"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "357"
-            endingLineNumber = "357"
-            landmarkName = "treeHeap()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Assignment_3/minHeap_HAM.h"
-            timestampString = "468738441.363071"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "358"
-            endingLineNumber = "358"
-            landmarkName = "treeHeap()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Assignment_3/minHeap_HAM.h"
-            timestampString = "468738441.363071"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
             startingLineNumber = "318"
             endingLineNumber = "318"
             landmarkName = "swap(int indexOne, int indexTwo)"
@@ -349,6 +285,38 @@
             endingLineNumber = "184"
             landmarkName = "top()"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Node&lt;Machine*&gt;::Node(Machine*)"
+                  moduleName = "Assignment_3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hmiles23/Google%20Drive/Programming/C++/COP3530%20-%20Data%20Structs/PA3/Assignment_3/Assignment_3/minHeap_HAM.h"
+                  timestampString = "468745048.477478"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "331"
+                  endingLineNumber = "331"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Node&lt;Machine*&gt;::Node(Machine*)"
+                  moduleName = "Assignment_3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hmiles23/Google%20Drive/Programming/C++/COP3530%20-%20Data%20Structs/PA3/Assignment_3/Assignment_3/minHeap_HAM.h"
+                  timestampString = "468745048.47786"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "332"
+                  endingLineNumber = "332"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -365,6 +333,38 @@
             endingLineNumber = "187"
             landmarkName = "class arrayHeap"
             landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Node&lt;Machine*&gt;::Node(Machine*)"
+                  moduleName = "Assignment_3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hmiles23/Google%20Drive/Programming/C++/COP3530%20-%20Data%20Structs/PA3/Assignment_3/Assignment_3/minHeap_HAM.h"
+                  timestampString = "468745048.48564"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "331"
+                  endingLineNumber = "331"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Node&lt;Machine*&gt;::Node(Machine*)"
+                  moduleName = "Assignment_3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hmiles23/Google%20Drive/Programming/C++/COP3530%20-%20Data%20Structs/PA3/Assignment_3/Assignment_3/minHeap_HAM.h"
+                  timestampString = "468745048.486151"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "332"
+                  endingLineNumber = "332"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -381,6 +381,38 @@
             endingLineNumber = "191"
             landmarkName = "class arrayHeap"
             landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Node&lt;Machine*&gt;::Node(Machine*)"
+                  moduleName = "Assignment_3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hmiles23/Google%20Drive/Programming/C++/COP3530%20-%20Data%20Structs/PA3/Assignment_3/Assignment_3/minHeap_HAM.h"
+                  timestampString = "468745048.487572"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "331"
+                  endingLineNumber = "331"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Node&lt;Machine*&gt;::Node(Machine*)"
+                  moduleName = "Assignment_3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hmiles23/Google%20Drive/Programming/C++/COP3530%20-%20Data%20Structs/PA3/Assignment_3/Assignment_3/minHeap_HAM.h"
+                  timestampString = "468745048.487896"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "332"
+                  endingLineNumber = "332"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -397,6 +429,38 @@
             endingLineNumber = "193"
             landmarkName = "class arrayHeap"
             landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Node&lt;Machine*&gt;::Node(Machine*)"
+                  moduleName = "Assignment_3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hmiles23/Google%20Drive/Programming/C++/COP3530%20-%20Data%20Structs/PA3/Assignment_3/Assignment_3/minHeap_HAM.h"
+                  timestampString = "468745048.489196"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "331"
+                  endingLineNumber = "331"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Node&lt;Machine*&gt;::Node(Machine*)"
+                  moduleName = "Assignment_3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hmiles23/Google%20Drive/Programming/C++/COP3530%20-%20Data%20Structs/PA3/Assignment_3/Assignment_3/minHeap_HAM.h"
+                  timestampString = "468745048.489477"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "332"
+                  endingLineNumber = "332"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -413,6 +477,38 @@
             endingLineNumber = "159"
             landmarkName = "reAlign(int parentIndex)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Node&lt;Machine*&gt;::Node(Machine*)"
+                  moduleName = "Assignment_3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hmiles23/Google%20Drive/Programming/C++/COP3530%20-%20Data%20Structs/PA3/Assignment_3/Assignment_3/minHeap_HAM.h"
+                  timestampString = "468745048.493383"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "331"
+                  endingLineNumber = "331"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Node&lt;Machine*&gt;::Node(Machine*)"
+                  moduleName = "Assignment_3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hmiles23/Google%20Drive/Programming/C++/COP3530%20-%20Data%20Structs/PA3/Assignment_3/Assignment_3/minHeap_HAM.h"
+                  timestampString = "468745048.493638"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "332"
+                  endingLineNumber = "332"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -429,6 +525,38 @@
             endingLineNumber = "161"
             landmarkName = "reAlign(int parentIndex)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Node&lt;Machine*&gt;::Node(Machine*)"
+                  moduleName = "Assignment_3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hmiles23/Google%20Drive/Programming/C++/COP3530%20-%20Data%20Structs/PA3/Assignment_3/Assignment_3/minHeap_HAM.h"
+                  timestampString = "468745048.495342"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "331"
+                  endingLineNumber = "331"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Node&lt;Machine*&gt;::Node(Machine*)"
+                  moduleName = "Assignment_3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hmiles23/Google%20Drive/Programming/C++/COP3530%20-%20Data%20Structs/PA3/Assignment_3/Assignment_3/minHeap_HAM.h"
+                  timestampString = "468745048.495931"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "332"
+                  endingLineNumber = "332"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -445,6 +573,38 @@
             endingLineNumber = "164"
             landmarkName = "reAlign(int parentIndex)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Node&lt;Machine*&gt;::Node(Machine*)"
+                  moduleName = "Assignment_3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hmiles23/Google%20Drive/Programming/C++/COP3530%20-%20Data%20Structs/PA3/Assignment_3/Assignment_3/minHeap_HAM.h"
+                  timestampString = "468745048.497835"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "331"
+                  endingLineNumber = "331"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Node&lt;Machine*&gt;::Node(Machine*)"
+                  moduleName = "Assignment_3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hmiles23/Google%20Drive/Programming/C++/COP3530%20-%20Data%20Structs/PA3/Assignment_3/Assignment_3/minHeap_HAM.h"
+                  timestampString = "468745048.498373"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "332"
+                  endingLineNumber = "332"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -461,6 +621,38 @@
             endingLineNumber = "170"
             landmarkName = "reAlign(int parentIndex)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Node&lt;Machine*&gt;::Node(Machine*)"
+                  moduleName = "Assignment_3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hmiles23/Google%20Drive/Programming/C++/COP3530%20-%20Data%20Structs/PA3/Assignment_3/Assignment_3/minHeap_HAM.h"
+                  timestampString = "468745048.500673"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "331"
+                  endingLineNumber = "331"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Node&lt;Machine*&gt;::Node(Machine*)"
+                  moduleName = "Assignment_3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hmiles23/Google%20Drive/Programming/C++/COP3530%20-%20Data%20Structs/PA3/Assignment_3/Assignment_3/minHeap_HAM.h"
+                  timestampString = "468745048.501095"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "332"
+                  endingLineNumber = "332"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -477,6 +669,54 @@
             endingLineNumber = "173"
             landmarkName = "reAlign(int parentIndex)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Node&lt;Machine*&gt;::Node(Machine*)"
+                  moduleName = "Assignment_3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hmiles23/Google%20Drive/Programming/C++/COP3530%20-%20Data%20Structs/PA3/Assignment_3/Assignment_3/minHeap_HAM.h"
+                  timestampString = "468745048.503721"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "331"
+                  endingLineNumber = "331"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Node&lt;Machine*&gt;::Node(Machine*)"
+                  moduleName = "Assignment_3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hmiles23/Google%20Drive/Programming/C++/COP3530%20-%20Data%20Structs/PA3/Assignment_3/Assignment_3/minHeap_HAM.h"
+                  timestampString = "468745048.504208"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "332"
+                  endingLineNumber = "332"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Assignment_3/main.cpp"
+            timestampString = "468745701.527051"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "main(int argc, const char * argv[])"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
