@@ -26,6 +26,10 @@ public:
         max = size;
     }
 
+    ~Machine(){
+
+    }
+
     void insert(int value){
         if(length <= max){
             //insert element at the end of the machine
@@ -67,6 +71,10 @@ public:
         machineHeap = new Machine*[size]();
         length = 0;
         max = size;
+    }
+
+    ~arrayHeap(){
+        
     }
 
     //add element to heap
@@ -243,6 +251,10 @@ public:
             rightChild = NULL;
             leftChild = NULL;
         }
+
+        ~Node() {
+
+        }
     };
 
     template <class type>
@@ -254,51 +266,9 @@ public:
         // constructor
         treeHeap(){
             root = NULL;
+        }
 
-
-            //testing
-//            //lvl1
-//            root = new Node<type>(new Machine(10));
-//            root->value->insert(1);
-//
-//            root->rightChild = new Node<type>(new Machine(10));
-//            root->rightChild->value->insert(3);
-//
-//            root->leftChild = new Node<type>(new Machine(10));
-//            root->leftChild->value->insert(2);
-//
-//            //lvl2
-//            root->rightChild->rightChild = new Node<type>(new Machine(10));
-//            root->rightChild->rightChild->value->insert(7);
-//
-//            root->rightChild->leftChild = new Node<type>(new Machine(10));
-//            root->rightChild->leftChild->value->insert(6);
-//
-//            root->leftChild->rightChild = new Node<type>(new Machine(10));
-//            root->leftChild->rightChild->value->insert(5);
-//            root->leftChild->leftChild = new Node<type>(new Machine(10));
-//            root->leftChild->leftChild->value->insert(4);
-//
-//            //lvl3
-//            root->rightChild->rightChild->rightChild = new Node<type>(new Machine(10));
-//            root->rightChild->rightChild->rightChild->value->insert(15);
-//            root->rightChild->rightChild->leftChild = new Node<type>(new Machine(10));
-//            root->rightChild->rightChild->leftChild->value->insert(14);
-//
-//            root->rightChild->leftChild->rightChild = new Node<type>(new Machine(10));
-//            root->rightChild->leftChild->rightChild->value->insert(13);
-//            root->rightChild->leftChild->leftChild = new Node<type>(new Machine(10));
-//            root->rightChild->leftChild->leftChild->value->insert(12);
-//
-//            root->leftChild->rightChild->rightChild = new Node<type>(new Machine(10));
-//            root->leftChild->rightChild->rightChild->value->insert(11);
-//            root->leftChild->rightChild->leftChild = new Node<type>(new Machine(10));
-//            root->leftChild->rightChild->leftChild->value->insert(10);
-//
-//            root->leftChild->leftChild->rightChild = new Node<type>(new Machine(10));
-//            root->leftChild->leftChild->rightChild->value->insert(9);
-//            root->leftChild->leftChild->leftChild = new Node<type>(new Machine(10));
-//            root->leftChild->leftChild->leftChild->value->insert(8);
+        ~treeHeap(){
 
         }
 
