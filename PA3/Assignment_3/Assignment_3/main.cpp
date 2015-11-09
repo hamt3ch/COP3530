@@ -12,63 +12,65 @@
 
 int main(int argc, const char * argv[]) {
 
-    cout << "Array" << endl;
-   arrayHeap* myHeap = new arrayHeap(10);
-   for(int i = 0; i < 10; i++){
-       Machine* t = new Machine(4);
-       t->insert(1);
-       t->insert(2);
-       t->insert(3);
-       t->insert(4);
-       
-       t->print();
-       
-       myHeap->push(t);
+    int numOfJobs;
+    int numOfMachines;
 
-   }
-    
-    myHeap->machinePrint();
+    cout << "Enter number of job(s)" << endl;
+    cin >> numOfJobs;
 
-       //myHeap->push(rand() % 100);
+    cout << "Enter number of machine(s)" << endl;
+    cin >> numOfMachines;
 
-   //
-   //  myHeap->print();
+    cout << "Enter Processing Time(s)" << endl;
+    int jobs[numOfJobs];
+    for (int i = 0; i < numOfJobs; i++){
+        cin >> jobs[i];
+    }
 
-    // cout << "Tree" << endl;
-    // treeHeap<int>* myTree = new treeHeap<int>();
-    // for(int i = 0; i < 10; i++){
-    //     myTree->push(rand() % 100);
-    //     myTree->print();
-    //     cout << "----------" << endl;
-    // }
+    //sort jobs in desceneding order
 
-    // for (int i = 0; i < 10; i++){
-    //     cout << myTree->top() << endl;
-    //     myTree->pop();
-    //     myTree->print();
-    // }
+    //create Heap
+    arrayHeap* myHeap = new arrayHeap(numOfMachines);
 
-   // myTree->print();
+    //create machines
+    for (int i = 0; i < numOfMachines; i++){
+        Machine* t = new Machine(numOfJobs); // create new Machine
+        myHeap->push(t); // push newMachine in Heap
 
+    }
 
-    //cout << myTree->top();
+    for (int i = 0; i < numOfJobs; i++) {
+        Machine* readyToWork = myHeap->top(); // get top machine
+        readyToWork->insert(jobs[i]); // add job to it
+        myHeap->pop(); //pop it off
+        myHeap->push(readyToWork); // push it back in
+    }
 
-    // cout << "Array" << endl;
-    // myHeap->print();
+    myHeap->print();
 
-
-    //Testing Priority Queue
-//    int test[10];
-//    for(int i = 0; i < 10; i++){
-//        test[i] = myTree->top();
-//        cout << test[i] << " ";
-//        myTree->pop();
-//    }
-
+//   cout << "Array" << endl;
+//   arrayHeap* myHeap = new arrayHeap(10);
+//   for(int i = 10; i > 0; i--){
+//       Machine* t = new Machine(4);
+//       t->insert(rand() % 100);
+//
+//       myHeap->push(t);
+//
+//   }
+//    cout << "Starting Tree:" << endl;
+//    myHeap->machinePrint();
+//
+//    //Testing Priority Queue
+//   int test[10];
+//   for(int i = 0; i < 10; i++){
+//       test[i] = myHeap->top()->sum;
+//       cout << test[i] << " ";
+//       myHeap->pop();
+//   }
+//
 //    for(int i = 0; i < 10; i++){
 //        if(test[i] > test[i+1] && i + 1 != 10){
 //            cout << "order is messed up at index" << i << endl;
 //        }
 //    }
-
 }
