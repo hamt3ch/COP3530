@@ -12,28 +12,96 @@
 using namespace std;
 #define empty -1
 
+class Machine {
+public:
+    int* log;
+    int sum;
+    int length;
+    int max;
+
+    Machine(int size){
+        log = new int[size];
+        sum = 0;
+        length = 0;
+        max = size;
+    }
+
+    void insert(int value){
+        if(length <= max){
+            //insert element at the end of the machine
+                log[length] = value; //add to end of heap
+                sum += value;
+                length++; // increase length
+            }
+
+            else {
+                cout << "No more room in machine" << endl;
+            }
+    }
+
+    void print(){
+        cout << "Sum = " << sum << endl;
+        cout << "Log:";
+        for(int i = 0; i < length; i++){
+            cout << log[i] << ",";
+        }
+        cout << endl;
+    }
+};
+
+
 class arrayHeap {
     int length;  // number of elements
+    int max;
     int* heap;  // array of rows
+    Machine** machineHeap; // array of Machines
+    int sum; // sum of array
 
 public:
     // constructor
     arrayHeap(int size){
         heap = new int[size];  // instantiate heap
+        machineHeap = new Machine*[size]();
         length = 0;
+        max = size;
     }
 
     //add element to heap
     void push(int toInsert){
-        //insert element at the end of the list
-        heap[length] = toInsert; //add to end of heap
-        int curIndex = length; // index of the value just added{
+        if(length <= max){
+            //insert element at the end of the list
+            heap[length] = toInsert; //add to end of heap
+            //machineHeap[length] = toInsertMachine;
 
-            //make recursive call here to the heap
-            compare(getParent(curIndex), curIndex);// swap values
+            int curIndex = length; // index of the value just added{
 
-            length++; // increase length
+                //make recursive call here to the heap
+                compare(getParent(curIndex), curIndex);// swap values
+
+                length++; // increase length
+            }
+
+            else {
+                cout << "No more room in heap" << endl;
+            }
         }
+
+     void push(Machine* toInsert){
+            if(length <= max){
+                machineHeap[length] = toInsert; //add machine to end of list
+                int curIndex = length; // index of the value just added{
+
+                //make recursive call here to the heap
+                //compare(getParent(curIndex), curIndex);// swap values
+
+                length++; // increase length
+            }
+
+            else {
+                    cout << "No more room in heap" << endl;
+            }
+        }
+
 
         //recursive sort for insert
         void compare(int parentIndex, int childIndex){
@@ -134,6 +202,32 @@ public:
             cout << "----------" << endl;
         }
 
+        void machinePrint(){
+            int curlen = length;
+            int i = 0;
+            int n = 0;
+            while (curlen > 0){
+                int prints = pow(2, n++); // get number of prints
+                for(int j = 0; j < prints; j++){
+                    if(i >= length){
+                        break;
+                    }
+                    cout << " " << machineHeap[i]->sum << " ";
+                    i++;
+                    curlen--;
+
+                }
+                cout << endl;
+                for(int j = 0; j < prints; j++){
+                    cout << " /" << "\\ " ;
+                }
+                //curlen -= prints;
+                cout << endl; // break
+            }
+
+            cout << "----------" << endl;
+        }
+
     private:
         //getRightChild of current parent index
         int getRight(int index){
@@ -214,7 +308,7 @@ public:
 
         //add value to heap
         void push(type value){
-        
+
         if(root == NULL){
                 //create a root
                 root = new Node<type>(value);
@@ -225,7 +319,7 @@ public:
                 root = new Node<type>(value);    // create newRoot
                 root->leftChild = saveOldRoot; // place old Tree as right Node
             }
-            
+
         else {
             //meld both currentTree w/ new Node
             Node<type>* toPush = new Node<type>(value);
@@ -237,7 +331,7 @@ public:
         Node<type>* toDelete = root;
         Node<type>* curRight = root->rightChild;
         Node<type>* curLeft = root->leftChild;
-        
+
         //There are value in the tree
         if (root) {
             //root children exist
@@ -247,27 +341,27 @@ public:
                     root = curLeft;
                     meld(root,curRight);
                 }
-                
+
                 else {
                     root = curRight;
                     meld(root,curLeft);
                 }
-                
+
                 // remove root
                  delete toDelete;
             }
-            
+
             //noRightChild but there is a Left
             else if(!curRight && curLeft) {
                 root = curLeft; //leftist tree bias no need to checkout left
             }
         }
-        
+
         //Empty Tree
         else{
             cout << "Tree has no values in it" << endl;
         }
-        
+
     }
 
     type top() {
@@ -283,7 +377,7 @@ public:
             cout << endl;
         }
     }
-        
+
     void printSubTree(Node<type>* subRoot){
         //breadth-First Search
         int h = getHeight(subRoot);
@@ -296,7 +390,7 @@ public:
 
 private:
     void meld(Node<type>* currentRoot, Node<type>* toMeld){
-        
+
         Node<type>* ptrX = currentRoot;
 
         //compare Node.values
