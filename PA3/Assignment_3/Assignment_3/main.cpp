@@ -10,6 +10,9 @@
 #include <math.h>
 #include "minHeap_HAM.h"
 
+//protoTypes///////////////
+void bubbleSort(int a[], int n);
+
 int main(int argc, const char * argv[]) {
 
     int numOfJobs;
@@ -28,21 +31,10 @@ int main(int argc, const char * argv[]) {
     }
 
     //sort jobs in desceneding order
+    bubbleSort(jobs, numOfJobs);
 
-    arrayHeap* array = new arrayHeap(numOfMachines);     //instantiate structs
+    arrayHeap* array = new arrayHeap(numOfMachines);      //instantiate structs
     treeHeap<Machine*> tree = *new ::treeHeap<Machine*>();
-//    for (int i = 0; i < 10; i++){
-//        Machine* t = new Machine(5); // create new Machine
-//        //t->insert(rand()%100);
-//        tree.push(t); // push newMachine in Heap
-//    }
-//    
-//    tree.print();
-//    
-//    for (int i = 0; i < 10; i++){
-//        cout << tree.top()->sum << " ";
-//        tree.pop(); // push newMachine in Heap
-//    }
 
     //Array Heap
     for (int i = 0; i < numOfMachines; i++){ //create machines
@@ -56,8 +48,12 @@ int main(int argc, const char * argv[]) {
         array->pop(); //pop it off
         array->push(readyToWork); // push it back in
     }
-
+    
+    cout << "Min Heap Finshing Time: " << array->getMax() << endl;
+    cout << "Schedule:" << endl;
     array->print();
+    cout << "Time Elapsed: " << endl;
+    cout << endl;
     
     //HeightBiased Leftist Tree
     for (int i = 0; i < numOfMachines; i++){ //create machines
@@ -72,6 +68,51 @@ int main(int argc, const char * argv[]) {
         tree.push(readyToWork); // push it back in
     }
     
-    tree.print();
+    //get max sum in tree
+    treeHeap<Machine*> tempTree = *new ::treeHeap<Machine*>();
+    int sum[numOfMachines];
+    cout << "Height Biased Leftist Tree Finshing Time: ";
+    for (int i = 0; i < numOfMachines; i++) {
+        Machine* readyToWork = tree.top(); // get top machine
+        tree.pop(); //pop it off
+        sum[i] = readyToWork->sum; // save sum
+        tempTree.push(readyToWork); // push it back in
+    }
+    
+    //Get max sum in tree
+    int max = sum[0];
+    for(int i = 1; i < numOfMachines; i++){
+        if(sum[i] > max){
+            max = sum[i];
+        }
+    }
+    cout << max << endl;
+    
+    //print Machines in tree
+    cout << "Schedule:" << endl;
+    for (int i = 0; i < numOfMachines; i++) {
+        Machine* readyToWork = tempTree.top(); // get top machine
+        tempTree.pop(); //pop it off
+        
+        cout << "Machine " << i+1 << ": ";
+        readyToWork->print();
+        tree.push(readyToWork); // push it back in
+    }
+    
+    cout << "Time Elapsed: " << endl;
 
 }
+
+void bubbleSort(int a[], int n){
+    int temp;
+    for(int i=0;i<n;i++) {
+        for(int j=0;j<n-i-1;j++){
+            if(a[j]<a[j+1]){
+                temp=a[j];
+                a[j]=a[j+1];  /*Swap have been done here*/
+                a[j+1]=temp;
+            }    
+        }     
+    } 
+}
+

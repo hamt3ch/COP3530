@@ -40,10 +40,13 @@ public:
     }
 
     void print(){
-        cout << "Sum = " << sum << endl;
-        cout << "Log:";
+        //cout << "Sum = " << sum << endl;
+        //cout << "Log:";
         for(int i = 0; i < length; i++){
-            cout << log[i] << ",";
+            cout << log[i];
+            if(i < length - 1){
+                cout << ",";
+            }
         }
         cout << endl;
     }
@@ -67,25 +70,6 @@ public:
     }
 
     //add element to heap
-    // void push(int toInsert){
-    //     if(length <= max){
-    //         //insert element at the end of the list
-    //         heap[length] = toInsert; //add to end of heap
-    //         //machineHeap[length] = toInsertMachine;
-    //
-    //         int curIndex = length; // index of the value just added{
-    //
-    //             //make recursive call here to the heap
-    //             compare(getParent(curIndex), curIndex);// swap values
-    //
-    //             length++; // increase length
-    //         }
-    //
-    //         else {
-    //             cout << "No more room in heap" << endl;
-    //         }
-    //     }
-
      void push(Machine* toInsert){
             if(length <= max){
                 machineHeap[length] = toInsert; //add machine to end of list
@@ -104,20 +88,6 @@ public:
 
 
         //recursive sort for insert
-        // void compare(int parentIndex, int childIndex){
-        //     if(childIndex == 0){
-        //         //there is no parentIndex
-        //     }
-        //
-        //     else if(heap[parentIndex] > heap[childIndex]){
-        //         //swap values
-        //         swap(parentIndex, childIndex);
-        //
-        //         //check compare again
-        //         compare(getParent(parentIndex),parentIndex);
-        //     }
-        // }
-
         void compare(int parentIndex, int childIndex) {
             if(childIndex == 0){
                   //there is no parentIndex
@@ -133,27 +103,6 @@ public:
         }
 
         //fix head after a pop
-        // void reAlign(int parentIndex) {
-        //     //check leftChild
-        //     if(heap[parentIndex] > heap[getLeft(parentIndex)] && getLeft(parentIndex) < length){
-        //         //swap values
-        //         swap(parentIndex, getLeft(parentIndex));
-        //
-        //         //check nodes below it
-        //         reAlign(getLeft(parentIndex));
-        //     }
-        //
-        //     //check rightChild
-        //     if(heap[parentIndex] > heap[getRight(parentIndex)] && getRight(parentIndex) < length){
-        //         //swap values
-        //         swap(parentIndex, getRight(parentIndex));
-        //         //   print();
-        //
-        //         //check nodes below it
-        //         reAlign(getRight(parentIndex));
-        //     }
-        // }
-
         void reAlign(int parentIndex) {
             if(machineHeap[parentIndex]){
                 //check leftChild
@@ -177,29 +126,9 @@ public:
         }
 
         //get minValue from heap
-        // int top(){
-        //     return heap[0]; // return firstElement list >> minValue
-        // }
-
         Machine* top(){
             return machineHeap[0];
         }
-
-        //remove minValue from heap
-        // void pop(){
-        //     //pull off top value
-        //     heap[0] = empty;
-        //     //  print();
-        //     //take last value in heap an put it at the top
-        //     swap(0, length - 1);
-        //     //print();
-        //
-        //     //decrease length
-        //     length--;
-        //
-        //     //compare with nodes below it
-        //     reAlign(0);
-        // }
 
         //remove minValue from heap
         void pop(){
@@ -219,10 +148,10 @@ public:
         //is the heap empty?
         bool isEmpty (){
             if(length) {
-                return true;
+                return false;
             }
             else {
-                return false;
+                return true;
             }
         }
 
@@ -231,33 +160,7 @@ public:
             return length;
         }
 
-        // void print(){
-        //     int curlen = length;
-        //     int i = 0;
-        //     int n = 0;
-        //     while (curlen > 0){
-        //         int prints = pow(2, n++); // get number of prints
-        //         for(int j = 0; j < prints; j++){
-        //             if(i >= length){
-        //                 break;
-        //             }
-        //             cout << " " << heap[i] << " ";
-        //             i++;
-        //             curlen--;
-        //
-        //         }
-        //         cout << endl;
-        //         for(int j = 0; j < prints; j++){
-        //             cout << " /" << "\\ " ;
-        //         }
-        //         //curlen -= prints;
-        //         cout << endl; // break
-        //     }
-        //
-        //     cout << "----------" << endl;
-        // }
-
-        void machinePrint(){
+        void printTree(){
             int curlen = length;
             int i = 0;
             int n = 0;
@@ -285,8 +188,22 @@ public:
 
         void print() {
             for (int i = 0; i < length; i++){
+                cout << "Machine " << i+1 << ": ";
                 machineHeap[i]->print();
             }
+        }
+
+        //find max in heap
+        int getMax() {
+            int max = machineHeap[0]->sum; // add job to it
+            for (int i = 0; i < length; i++) {
+                Machine* index = machineHeap[i]; // get top machine
+                if(index->sum > max){
+                    max = index->sum;
+                }
+            }
+
+            return max;
         }
 
     private:
@@ -304,13 +221,6 @@ public:
         int getParent(int index) {
             return floor((index - 1)/2);
         }
-
-        //swap indexOne with indexTwo
-        // void swap(int indexOne, int indexTwo){
-        //     int save = heap[indexOne];
-        //     heap[indexOne] = heap[indexTwo];
-        //     heap[indexTwo] = save;
-        // }
 
         void swap(int indexOne, int indexTwo){
             Machine* save = machineHeap[indexOne];
@@ -392,27 +302,7 @@ public:
 
         }
 
-        //add value to heap
-    //     void push(type value){
-    //
-    //     if(root == NULL){
-    //             //create a root
-    //             root = new Node<type>(value);
-    //         }
-    //
-    //     else if(root->value > value) { // root < value
-    //             Node<type>* saveOldRoot = root; //save old tree
-    //             root = new Node<type>(value);    // create newRoot
-    //             root->leftChild = saveOldRoot; // place old Tree as right Node
-    //         }
-    //
-    //     else {
-    //         //meld both currentTree w/ new Node
-    //         Node<type>* toPush = new Node<type>(value);
-    //         meld(root, toPush);
-    //     }
-    // }
-
+    //add value to heap
     void push(type value){
 
     if(root == NULL){
@@ -475,6 +365,16 @@ public:
     }
 
     void print() {
+        //breadth-First Search
+        int h = getHeight(root);
+        int i;
+        for(i=1; i<=h; i++) {
+            machinelvlOrder(root, i);
+            cout << endl;
+        }
+    }
+
+    void printTree() {
         //breadth-First Search
         int h = getHeight(root);
         int i;
@@ -581,6 +481,23 @@ private:
         {
             lvlOrder(root->leftChild, level-1);
             lvlOrder(root->rightChild, level-1);
+        }
+    }
+
+    void machinelvlOrder(Node<type>* root, int level){
+        if(root == NULL){
+            cout << " - ";
+            return;
+        }
+
+        if(level == 1){
+            root->value->print();
+        }
+
+        else if (level > 1)
+        {
+            machinelvlOrder(root->leftChild, level-1);
+            machinelvlOrder(root->rightChild, level-1);
         }
     }
 
