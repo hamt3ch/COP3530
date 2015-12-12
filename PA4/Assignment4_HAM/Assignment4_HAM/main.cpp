@@ -11,16 +11,16 @@
 int main(int argc, const char * argv[]) {
     Graph* graph = new Graph(3);
 
+    graph->addVert(0);
     graph->addVert(1);
     graph->addVert(2);
     graph->addVert(3);
     graph->addVert(4);
     graph->addVert(5);
-    graph->addVert(6);
 
-    graph->createEdge(1,2,1);
-    graph->createEdge(1,6,2);
-    graph->createEdge(7,8,3);
+    graph->createEdge(0,2,1);
+    graph->createEdge(0,6,2);
+    graph->createEdge(0,8,3);
 
-    graph->print();
+    graph->primmsSPT( 0);
 }

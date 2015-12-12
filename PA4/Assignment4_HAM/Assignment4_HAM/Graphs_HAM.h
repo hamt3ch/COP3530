@@ -32,14 +32,24 @@ public:
 class Node {
 public:
     int data; //value of Node
+    bool visited;
     vector<Edge> connections; // list of connected
 
     Node(int initData){ // constructor
         data = initData;
+        visited = false;
     }
 
     void addEdge(int vertToConnect, int weight){ //add connection to edge
         connections.push_back(*new Edge(vertToConnect, weight));
+    }
+    
+    void print() {
+        cout << "name: " << data << endl;
+        cout << "visited:" << visited << endl;
+        for(auto && edges : connections){
+            cout << "   " << edges.getVert() << ":" << edges.getWeight() << endl; // print edge&weight
+        }
     }
 };
 
@@ -58,14 +68,10 @@ bool operator&& (const Node& lhs, const Node& rhs) {
 
 class Graph {
 private:
-    int numOfVerts;
-    bool *hash;
     vector<Node> myGraph;
     
 public:
-    Graph(int numOfVerts){ //constructor
-        //intialize adjaceny list
-    }
+    Graph(int numOfVerts){}//constructor
 
     void createEdge(int strVert, int endVert, int weight){ // add Vert to Graph
         Node* v1 = getVert(strVert); // int >> Node
@@ -114,6 +120,35 @@ public:
             }
         }
     }
+    
+    void primmsSPT(int vertToStart){
+        vector<Node> visited;
+        Node* tempVert;
+        
+        //start and the first vertice
+        if(getVert(vertToStart) != NULL){
+            tempVert = getVert(vertToStart);
+        }
+        
+        tempVert = (getVert(vertToStart) != NULL) ? getVert(vertToStart) : nullptr;
+        tempVert->print();
+        
+        //append to visited subGraph
+        visited.push_back(*tempVert);
+        
+        Node front = visited.front();
+        for (auto && egde : front.connections) {
+            
+        }
+        
+        //find smallest edge coming of subGraph
+        
+        //append to visited subGraph
+        
+        //myGraph->print();
+ 
+    }
+    
 };
 
 #endif /* Graphs_HAM_h */
