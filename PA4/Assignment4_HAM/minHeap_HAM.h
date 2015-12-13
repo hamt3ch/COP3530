@@ -9,6 +9,7 @@
 #ifndef minHeap_HAM_h
 #define minHeap_HAM_h
 
+#include <math.h>
 using namespace std;
 #define empty -1
 
@@ -56,12 +57,11 @@ public:
     }
 };
 
-template <class type>
 class arrayHeap {
     int length;  // number of elements
     int max;
     int* heap;  // array of rows
-    type** machineHeap; // array of Machines
+    Machine** machineHeap; // array of Machines
     int sum; // sum of array
     
 public:
@@ -239,27 +239,27 @@ private:
 };
 
 template <class type>
-class Node {
+class treeNode {
 public:
     type value;
-    Node<type>* rightChild;
-    Node<type>* leftChild;
+    treeNode<type>* rightChild;
+    treeNode<type>* leftChild;
     
     //constructor
-    Node(type initVal) {
+    treeNode(type initVal) {
         value = initVal;
         rightChild = NULL;
         leftChild = NULL;
     }
     
-    ~Node() {
+    ~treeNode() {
         
     }
 };
 
 template <class type>
 class treeHeap {
-    Node<type>* root;
+    treeNode<type>* root;
     int length;
     
 public:
@@ -277,33 +277,33 @@ public:
         
         if(root == NULL){
             //create a root
-            root = new Node<type>(value);
+            root = new treeNode<type>(value);
         }
         
-        else if(root->value->sum > value->sum) { // root < value
-            Node<type>* saveOldRoot = root; //save old tree
-            root = new Node<type>(value);    // create newRoot
+        else if(root->value->getWeight() > value->getWeight()) { // root < value
+            treeNode<type>* saveOldRoot = root; //save old tree
+            root = new treeNode<type>(value);    // create newRoot
             root->leftChild = saveOldRoot; // place old Tree as right Node
         }
         
         else {
             //meld both currentTree w/ new Node
-            Node<type>* toPush = new Node<type>(value);
+            treeNode<type>* toPush = new treeNode<type>(value);
             meld(root, toPush);
         }
     }
     
     void pop(){
-        Node<type>* toDelete = root;
-        Node<type>* curRight = root->rightChild;
-        Node<type>* curLeft = root->leftChild;
+        treeNode<type>* toDelete = root;
+        treeNode<type>* curRight = root->rightChild;
+        treeNode<type>* curLeft = root->leftChild;
         
         //There are value in the tree
         if (root) {
             //root children exist
             if(curRight && curLeft){
                 //check which is lest and set as root then meld
-                if(root->rightChild->value->sum > root->leftChild->value->sum){
+                if(root->rightChild->value->getWeight() > root->leftChild->value->getWeight()){
                     root = curLeft;
                     meld(root,curRight);
                 }
@@ -354,7 +354,7 @@ public:
         }
     }
     
-    void printSubTree(Node<type>* subRoot){
+    void printSubTree(treeNode<type>* subRoot){
         //breadth-First Search
         int h = getHeight(subRoot);
         int i;
@@ -365,13 +365,13 @@ public:
     }
     
 private:
-    void meld(Node<type>* currentRoot, Node<type>* toMeld){
+    void meld(treeNode<type>* currentRoot, treeNode<type>* toMeld){
         
-        Node<type>* ptrX = currentRoot;
+        treeNode<type>* ptrX = currentRoot;
         
         //compare Node.values
-        Node <type>* myParent; //saves parentNode when looking for spot to meld
-        while(ptrX->value->sum <= toMeld->value->sum){ // traverse right side tree
+        treeNode <type>* myParent; //saves parentNode when looking for spot to meld
+        while(ptrX->value->getWeight() <= toMeld->value->getWeight()){ // traverse right side tree
             myParent = ptrX;
             ptrX = ptrX->rightChild;
             if (!ptrX){
@@ -395,7 +395,7 @@ private:
         }
     }
     
-    void checkRanks(Node<type>* root){ // checks if the currentChildren are in right order
+    void checkRanks(treeNode<type>* root){ // checks if the currentChildren are in right order
         if(root){
             //rank(L) > rank(R)
             if(getRank(root->leftChild) < getRank(root->rightChild)){
@@ -412,13 +412,13 @@ private:
         }
     }
     
-    void swap(Node<type>* parent){
-        Node<type>* save = parent->rightChild;
+    void swap(treeNode<type>* parent){
+        treeNode<type>* save = parent->rightChild;
         parent->rightChild = parent->leftChild;
         parent->leftChild = save;
     }
     
-    int getRank(Node<type>* node){
+    int getRank(treeNode<type>* node){
         if(node) { // part of tree
             if(node->rightChild && node->leftChild){
                 int leftRank = getRank(node->leftChild); // getChildrenRank
@@ -437,7 +437,7 @@ private:
         }
     }
     
-    void lvlOrder(Node<type>* root, int level){
+    void lvlOrder(treeNode<type>* root, int level){
         if(root == NULL){
             cout << " - ";
             return;
@@ -454,7 +454,7 @@ private:
         }
     }
     
-    void machinelvlOrder(Node<type>* root, int level){
+    void machinelvlOrder(treeNode<type>* root, int level){
         if(root == NULL){
             cout << " - ";
             return;
@@ -471,7 +471,7 @@ private:
         }
     }
     
-    int getHeight(Node<type>* node){
+    int getHeight(treeNode<type>* node){
         if (node == NULL)
             return 0;
         

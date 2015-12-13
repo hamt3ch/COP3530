@@ -11,21 +11,35 @@
 
 #include <iostream>
 #include <vector>
+#include "minHeap_HAM.h"
+
 using namespace std;
 
 class Edge {
 private:
-    int vert; // connection from thisNode to other Vert
+    int vert1; // connection from thisNode to other Vert
+    int vert2; // for overLoad
     int weight; // weight of this Edge8
 
 public:
     Edge(int connectedVert, int initWeight){
-        vert = connectedVert;
+        vert1 = connectedVert;
         weight = initWeight;
+    }
+    
+    Edge(int initVert1, int initVert2, int initWeight){
+        vert1 = initVert1;
+        vert2 = initVert2;
+        weight = initWeight;
+    }
+    
+    void print() {
+        cout << "[" << vert1 << "," << vert2 << "] " << weight << endl;
     }
 
     int getWeight(){return weight;}
-    int getVert(){return vert;}
+    int getVert1(){return vert1;}
+    int getVert2(){return vert2;}
 };
 
 
@@ -48,7 +62,7 @@ public:
         cout << "name: " << data << endl;
         cout << "visited:" << visited << endl;
         for(auto && edges : connections){
-            cout << "   " << edges.getVert() << ":" << edges.getWeight() << endl; // print edge&weight
+            cout << "   " << edges.getVert1() << ":" << edges.getWeight() << endl; // print edge&weight
         }
     }
 };
@@ -69,9 +83,11 @@ bool operator&& (const Node& lhs, const Node& rhs) {
 class Graph {
 private:
     vector<Node> myGraph;
+    vector<Edge> myEdges;
+    int verts;
     
 public:
-    Graph(int numOfVerts){}//constructor
+    Graph(int numOfVerts){verts = numOfVerts;}//constructor
 
     void createEdge(int strVert, int endVert, int weight){ // add Vert to Graph
         Node* v1 = getVert(strVert); // int >> Node
@@ -83,16 +99,10 @@ public:
             //add vert.int to both connections list
             v1->addEdge(v2->data, weight);
             v2->addEdge(v1->data, weight);
-        }
-        
-        //1 of 2 Verts exist
-        else if((v1 == NULL && v2 != NULL ) || (v1 != NULL && v2 == NULL)){
-            cout << "one exist" << endl;
-        }
+            
+            //add to list of edges
+            myEdges.push_back(*new Edge(strVert,endVert,weight));
 
-        //Neither Verts exist
-        else {
-            cout << "Neither Exist" << endl;
         }
     }
 
@@ -116,37 +126,54 @@ public:
             cout << "Vert = ";
             cout << vert.data << endl; // print node name
             for(auto && edges : vert.connections){
-                cout << "   " << edges.getVert() << ":" << edges.getWeight() << endl; // print edge&weight
+                cout << "   " << edges.getVert1() << ":" << edges.getWeight() << endl; // print edge&weight
             }
         }
     }
     
-    void primmsSPT(int vertToStart){
-        vector<Node> visited;
-        Node* tempVert;
+    void printEdges(){
+        for (auto &&edge : myEdges){
+            edge.print();
+        }
+    }
+    
+    void KruskalMST(){
+        bool visited[verts];
+        for (int i = 0; i < verts; i++) {visited[i]=false;}
+        vector<Edge> mst;
+        treeHeap<Edge*> minQ = *new ::treeHeap<Edge*>();
         
-        //start and the first vertice
-        if(getVert(vertToStart) != NULL){
-            tempVert = getVert(vertToStart);
+        //get all the edges
+        for (auto &&edge : myEdges){
+            minQ.push(&edge);
         }
         
-        tempVert = (getVert(vertToStart) != NULL) ? getVert(vertToStart) : nullptr;
-        tempVert->print();
-        
-        //append to visited subGraph
-        visited.push_back(*tempVert);
-        
-        Node front = visited.front();
-        for (auto && egde : front.connections) {
+        //Do search
+        for(int i = 0; i <= verts; i++){
+            Edge smallestEdge = *minQ.top(); // get smallest edge
             
+            //getHash for verts
+            int hashForVert1 = smallestEdge.getVert1() % verts;
+            int hashForVert2 = smallestEdge.getVert2() % verts;
+
+            //check if they been visited
+            if(!visited[hashForVert1] || !visited[hashForVert2]){ // havent been to Vert1
+                mst.push_back(smallestEdge);
+                visited[hashForVert1] = true; // mark as visited
+                visited[hashForVert2] = true; // mark as visited
+                
+            } else {
+                cout << "Skipped this Edge" << endl;
+            }
+            
+            smallestEdge.print();
+            minQ.pop();
         }
         
-        //find smallest edge coming of subGraph
-        
-        //append to visited subGraph
-        
-        //myGraph->print();
- 
+        cout << "MST:" << endl;
+        for (auto &&edge : mst){
+            edge.print();
+        }
     }
     
 };

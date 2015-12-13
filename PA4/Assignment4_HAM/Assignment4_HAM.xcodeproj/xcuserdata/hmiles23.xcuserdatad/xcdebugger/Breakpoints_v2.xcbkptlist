@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Assignment4_HAM/Graphs_HAM.h"
-            timestampString = "471049899.680066"
+            timestampString = "471660368.789934"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30">
+            startingLineNumber = "44"
+            endingLineNumber = "44">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -116,11 +116,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Assignment4_HAM/Graphs_HAM.h"
-            timestampString = "471227875.678385"
+            timestampString = "471660368.789934"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "class Graph"
             landmarkType = "3">
             <Locations>
@@ -164,11 +164,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Assignment4_HAM/Graphs_HAM.h"
-            timestampString = "471227875.678385"
+            timestampString = "471660368.789934"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "class Graph"
             landmarkType = "3">
             <Locations>
@@ -212,11 +212,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Assignment4_HAM/Graphs_HAM.h"
-            timestampString = "471227875.678385"
+            timestampString = "471660368.789934"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "print()"
             landmarkType = "5">
          </BreakpointContent>
@@ -228,11 +228,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Assignment4_HAM/Graphs_HAM.h"
-            timestampString = "471226642.634391"
+            timestampString = "471660368.789934"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "class Node"
             landmarkType = "3">
             <Locations>
@@ -276,11 +276,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Assignment4_HAM/Graphs_HAM.h"
-            timestampString = "471227875.678385"
+            timestampString = "471660368.789934"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "print()"
             landmarkType = "5">
          </BreakpointContent>
@@ -292,11 +292,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Assignment4_HAM/Graphs_HAM.h"
-            timestampString = "471227875.678385"
+            timestampString = "471661730.726263"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "class Graph"
             landmarkType = "3">
          </BreakpointContent>
@@ -308,11 +308,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Assignment4_HAM/Graphs_HAM.h"
-            timestampString = "471227875.678385"
+            timestampString = "471661730.726263"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "createEdge(int strVert, int endVert, int weight)"
             landmarkType = "5">
          </BreakpointContent>
@@ -320,31 +320,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Assignment4_HAM/Graphs_HAM.h"
-            timestampString = "471227875.678385"
+            timestampString = "471661730.726263"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "print()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Assignment4_HAM/Graphs_HAM.h"
-            timestampString = "471227875.678385"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "print()"
             landmarkType = "5">
          </BreakpointContent>
@@ -356,11 +340,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Assignment4_HAM/Graphs_HAM.h"
-            timestampString = "471226642.634391"
+            timestampString = "471661730.726263"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "print()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Assignment4_HAM/Graphs_HAM.h"
+            timestampString = "471660368.789934"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "class Node"
             landmarkType = "3">
             <Locations>
@@ -404,11 +404,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Assignment4_HAM/Graphs_HAM.h"
-            timestampString = "471227875.678385"
+            timestampString = "471661730.726263"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "createEdge(int strVert, int endVert, int weight)"
             landmarkType = "5">
          </BreakpointContent>
@@ -420,11 +420,59 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Assignment4_HAM/Graphs_HAM.h"
-            timestampString = "471227875.678385"
+            timestampString = "471661730.726263"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "getVert(int toCheck)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Assignment4_HAM/Graphs_HAM.h"
+            timestampString = "471661730.726263"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "getVert(int toCheck)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Assignment4_HAM/Graphs_HAM.h"
+            timestampString = "471661730.726263"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "getVert(int toCheck)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Assignment4_HAM/Graphs_HAM.h"
+            timestampString = "471661730.726263"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "getVert(int toCheck)"
             landmarkType = "5">
          </BreakpointContent>
@@ -436,12 +484,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Assignment4_HAM/Graphs_HAM.h"
-            timestampString = "471227875.678385"
+            timestampString = "471661697.940321"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "getVert(int toCheck)"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "printEdges()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Assignment4_HAM/Graphs_HAM.h"
+            timestampString = "471661782.654917"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "createEdge(int strVert, int endVert, int weight)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Assignment4_HAM/Graphs_HAM.h"
+            timestampString = "471664467.479554"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "KruskalMST(int vertToStart)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Assignment4_HAM/Graphs_HAM.h"
+            timestampString = "471664467.479554"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "KruskalMST(int vertToStart)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -452,12 +548,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Assignment4_HAM/Graphs_HAM.h"
-            timestampString = "471227875.678385"
+            timestampString = "471664483.62812"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
-            landmarkName = "getVert(int toCheck)"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "KruskalMST(int vertToStart)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -468,12 +564,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Assignment4_HAM/Graphs_HAM.h"
-            timestampString = "471227875.678385"
+            timestampString = "471664483.62812"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "getVert(int toCheck)"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "KruskalMST(int vertToStart)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Assignment4_HAM/Graphs_HAM.h"
+            timestampString = "471664467.479554"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "KruskalMST(int vertToStart)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Assignment4_HAM/Graphs_HAM.h"
+            timestampString = "471664483.62812"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "KruskalMST(int vertToStart)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
