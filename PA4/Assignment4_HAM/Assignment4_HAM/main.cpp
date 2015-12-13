@@ -37,22 +37,12 @@ int main(int argc, const char * argv[]) {
         graph->createEdge(nodeA, nodeB, weight);
     }
     
-    graph->KruskalMST();
-
+    //graph->KruskalMST();
+    graph->PrimMST(0);
+    
+    
     cout << "enter the start Node:" << endl;
     int startNode;
     cin >> startNode;
 
-//    graph->addVert(0);
-//    graph->addVert(1);
-//    graph->addVert(2);
-//    graph->addVert(3);
-//    graph->addVert(4);
-//    graph->addVert(5);
-//
-//    graph->createEdge(0,2,1);
-//    graph->createEdge(0,6,2);
-//    graph->createEdge(0,8,3);
-//
-//    graph->primmsSPT( 0);
 }

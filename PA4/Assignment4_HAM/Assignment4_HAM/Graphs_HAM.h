@@ -55,7 +55,7 @@ public:
     }
 
     void addEdge(int vertToConnect, int weight){ //add connection to edge
-        connections.push_back(*new Edge(vertToConnect, weight));
+        connections.push_back(*new Edge(data, vertToConnect, weight));
     }
     
     void print() {
@@ -95,7 +95,6 @@ public:
         
         //Both Verts exist
         if(v1 != NULL && v2 != NULL){
-            cout << "Both Exist" << endl;
             //add vert.int to both connections list
             v1->addEdge(v2->data, weight);
             v2->addEdge(v1->data, weight);
@@ -166,15 +165,71 @@ public:
                 cout << "Skipped this Edge" << endl;
             }
             
-            smallestEdge.print();
-            minQ.pop();
+            minQ.pop(); // remove edge from Q
         }
         
-        cout << "MST:" << endl;
+        cout << "Kruskal's MST:" << endl;
         for (auto &&edge : mst){
             edge.print();
         }
     }
+    
+    void PrimMST(int startNode){
+        treeHeap<Edge*> minQ = *new ::treeHeap<Edge*>();
+        bool visited[verts];
+        for (int i = 0; i < verts; i++) {visited[i]=false;}
+        vector<Edge> mst;
+        
+        //get startNode
+        Node current = myGraph.at(startNode);
+        
+        while(!allVisited(visited, verts)){
+
+            //add edges from this node minQ
+            for (auto &&edge : current.connections){
+                minQ.push(&edge);
+            }
+            
+            minQ.print();
+
+            //mark node as visited
+            int hash = current.data % verts;
+            visited[hash] = true;
+            
+            //find smallest edge >>> Node connected
+            do {
+                Edge edgeToMove = *minQ.top();
+                minQ.pop();
+                cout << "----------------------" << endl;
+                minQ.print();
+                int nextNode = edgeToMove.getVert2();
+                int nextHash = nextNode % verts;
+                if(!visited[nextHash]){
+                    current = myGraph.at(nextNode); //found new unvisited Node
+                    cout << "currentNode = " << nextNode << endl;
+                    mst.push_back(edgeToMove);
+                    break;
+                }
+                
+            } while (!visited[hash]);
+  
+        }
+        
+        //print out MST
+        cout << "Prim's MST:" << endl;
+        for (auto &&edge : mst){
+            edge.print();
+        }
+    }
+    
+    bool allVisited(bool array[], int nodes){
+        for(int i = 0; i < nodes; i++){
+            if(!array[i]){return false;}
+        } return true;
+    }
+
+    
+    void BoruvkaMST(){}
     
 };
 
