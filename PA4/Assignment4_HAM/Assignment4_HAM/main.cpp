@@ -37,12 +37,12 @@ int main(int argc, const char * argv[]) {
         graph->createEdge(nodeA, nodeB, weight);
     }
     
-    //graph->KruskalMST();
-    graph->PrimMST(0);
-    
-    
     cout << "enter the start Node:" << endl;
     int startNode;
     cin >> startNode;
-
+    
+    graph->KruskalMST();
+    graph->PrimMST(startNode);
+    graph->BoruvkaMST();
+    
 }

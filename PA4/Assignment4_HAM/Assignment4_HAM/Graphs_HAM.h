@@ -161,17 +161,18 @@ public:
                 visited[hashForVert1] = true; // mark as visited
                 visited[hashForVert2] = true; // mark as visited
                 
-            } else {
-                cout << "Skipped this Edge" << endl;
-            }
-            
+            } 
             minQ.pop(); // remove edge from Q
         }
         
         cout << "Kruskal's MST:" << endl;
+        int sum = 0;
         for (auto &&edge : mst){
             edge.print();
+            sum += edge.getWeight();
         }
+        
+        cout << "Total Weight:" << endl << sum << endl;
     }
     
     void PrimMST(int startNode){
@@ -190,8 +191,6 @@ public:
                 minQ.push(&edge);
             }
             
-            minQ.print();
-
             //mark node as visited
             int hash = current.data % verts;
             visited[hash] = true;
@@ -200,13 +199,10 @@ public:
             do {
                 Edge edgeToMove = *minQ.top();
                 minQ.pop();
-                cout << "----------------------" << endl;
-                minQ.print();
                 int nextNode = edgeToMove.getVert2();
                 int nextHash = nextNode % verts;
                 if(!visited[nextHash]){
                     current = myGraph.at(nextNode); //found new unvisited Node
-                    cout << "currentNode = " << nextNode << endl;
                     mst.push_back(edgeToMove);
                     break;
                 }
@@ -217,9 +213,13 @@ public:
         
         //print out MST
         cout << "Prim's MST:" << endl;
+        int sum = 0;
         for (auto &&edge : mst){
             edge.print();
+            sum += edge.getWeight();
         }
+        
+        cout << "Total Weight:" << endl << sum << endl;
     }
     
     bool allVisited(bool array[], int nodes){
@@ -228,9 +228,56 @@ public:
         } return true;
     }
 
+    void BoruvkaMST(int start=0){
+        //init
+        int nodeSet[verts];
+        for (int i = 0; i < verts; i++) {nodeSet[i] = i;}
+        vector<Edge> mst;
+        vector<Node> ws = myGraph;
+        
+        for(auto &&node : ws){
+            Node* current = &node;
+            Edge min = findMinEdge(*current);
+            int src = find(min.getVert1(), nodeSet);
+            int dest = find(min.getVert2(), nodeSet);
+            if(src != dest){
+                mst.push_back(min);
+                unionSet(src, dest, nodeSet);
+                Node rep = myGraph.at(find(src,nodeSet));
+                myGraph.push_back(rep);
+            }
+        }
+        
+        //print out MST
+        cout << "Boruvka's MST:" << endl;
+        int sum = 0;
+        for (auto &&edge : mst){
+            edge.print();
+            sum += edge.getWeight();
+        }
+        cout << "Total Weight:" << endl << sum << endl;
+    }
     
-    void BoruvkaMST(){}
+    //minEdge
+    Edge findMinEdge(Node n){
+        //n.print();
+        treeHeap<Edge*> minQ = *new ::treeHeap<Edge*>();
+        //add edges from this node minQ
+        for (auto &&edge : n.connections){
+            minQ.push(&edge);
+        }
+        
+        return *minQ.top();
+    }
     
+    //union find
+    int find( int x, int uf[]) {
+        if( uf[x] == x ) return x; // x is the leader
+        return find( uf[x], uf);
+    }
+    void unionSet( int x, int y, int uf[]) {
+        uf[find( x, uf)] = find( y, uf);
+    }
 };
 
 #endif /* Graphs_HAM_h */
