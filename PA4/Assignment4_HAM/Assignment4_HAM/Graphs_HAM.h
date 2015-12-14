@@ -115,11 +115,6 @@ public:
                 return vert; // found vert
             }
         } return NULL;
-//        for (auto && vert : myGraph){
-//            if(vert.data == toCheck){
-//                return &vert; // found vert
-//            }
-//        }  return NULL; // curent vert doesnt Exist
     };
 
     
@@ -129,17 +124,10 @@ public:
             cout << "Vert = ";
             cout << vert->data << endl; // print node name
         }
-//        for(auto &&vert : myGraph){
-//            for(auto && edges : vert.connections){
-//                cout << "   " << edges.getVert1() << ":" << edges.getWeight() << endl; // print edge&weight
-//            }
-//        }
+
     }
     
     void printEdges(){
-//        for (auto &&edge : myEdges){
-//            edge.print();
-//        }
     }
     
     void KruskalMST(){
@@ -148,10 +136,6 @@ public:
         vector<Edge> mst;
         treeHeap<Edge*> minQ = *new ::treeHeap<Edge*>();
         
-        //get all the edges
-//        for (auto &&edge : myEdges){
-//            minQ.push(&edge);
-//        }
         
         for(int i = 0; i < myEdges.size(); i++){
             Edge* toPush = &myEdges.at(i);
