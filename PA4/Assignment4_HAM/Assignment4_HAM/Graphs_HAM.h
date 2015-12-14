@@ -61,9 +61,6 @@ public:
     void print() {
         cout << "name: " << data << endl;
         cout << "visited:" << visited << endl;
-        for(auto && edges : connections){
-            cout << "   " << edges.getVert1() << ":" << edges.getWeight() << endl; // print edge&weight
-        }
     }
 };
 
@@ -112,28 +109,37 @@ public:
     
     // Convert int >> Node value inside current graph
     Node* getVert(int toCheck){
-        for (auto && vert : myGraph){
-            if(vert.data == toCheck){
-                return &vert; // found vert
+        for(int i = 0; i < myGraph.size(); i++ ){
+            Node* vert = &myGraph.at(i);
+            if(vert->data == toCheck){
+                return vert; // found vert
             }
-        }  return NULL; // curent vert doesnt Exist
+        } return NULL;
+//        for (auto && vert : myGraph){
+//            if(vert.data == toCheck){
+//                return &vert; // found vert
+//            }
+//        }  return NULL; // curent vert doesnt Exist
     };
 
     
     void print(){
-        for(auto &&vert : myGraph){
+        for(int i = 0; i < myGraph.size(); i++){
+            Node* vert = &myGraph.at(i);
             cout << "Vert = ";
-            cout << vert.data << endl; // print node name
-            for(auto && edges : vert.connections){
-                cout << "   " << edges.getVert1() << ":" << edges.getWeight() << endl; // print edge&weight
-            }
+            cout << vert->data << endl; // print node name
         }
+//        for(auto &&vert : myGraph){
+//            for(auto && edges : vert.connections){
+//                cout << "   " << edges.getVert1() << ":" << edges.getWeight() << endl; // print edge&weight
+//            }
+//        }
     }
     
     void printEdges(){
-        for (auto &&edge : myEdges){
-            edge.print();
-        }
+//        for (auto &&edge : myEdges){
+//            edge.print();
+//        }
     }
     
     void KruskalMST(){
@@ -143,8 +149,13 @@ public:
         treeHeap<Edge*> minQ = *new ::treeHeap<Edge*>();
         
         //get all the edges
-        for (auto &&edge : myEdges){
-            minQ.push(&edge);
+//        for (auto &&edge : myEdges){
+//            minQ.push(&edge);
+//        }
+        
+        for(int i = 0; i < myEdges.size(); i++){
+            Edge* toPush = &myEdges.at(i);
+            minQ.push(toPush);
         }
         
         //Do search
@@ -167,7 +178,8 @@ public:
         
         cout << "Kruskal's MST:" << endl;
         int sum = 0;
-        for (auto &&edge : mst){
+        for (int i = 0; i < mst.size(); i++) {
+            Edge edge = mst.at(i);
             edge.print();
             sum += edge.getWeight();
         }
@@ -187,8 +199,9 @@ public:
         while(!allVisited(visited, verts)){
 
             //add edges from this node minQ
-            for (auto &&edge : current.connections){
-                minQ.push(&edge);
+            for(int i = 0; i < current.connections.size(); i++){
+                Edge* toPush = &current.connections.at(i);
+                minQ.push(toPush);
             }
             
             //mark node as visited
@@ -214,7 +227,8 @@ public:
         //print out MST
         cout << "Prim's MST:" << endl;
         int sum = 0;
-        for (auto &&edge : mst){
+        for (int i = 0; i < mst.size(); i++) {
+            Edge edge = mst.at(i);
             edge.print();
             sum += edge.getWeight();
         }
@@ -235,9 +249,9 @@ public:
         vector<Edge> mst;
         vector<Node> ws = myGraph;
         
-        for(auto &&node : ws){
-            Node* current = &node;
-            Edge min = findMinEdge(*current);
+        for(int i = 0; i < myGraph.size(); i++){
+            Node current = myGraph.at(i);
+            Edge min = findMinEdge(current);
             int src = find(min.getVert1(), nodeSet);
             int dest = find(min.getVert2(), nodeSet);
             if(src != dest){
@@ -251,20 +265,24 @@ public:
         //print out MST
         cout << "Boruvka's MST:" << endl;
         int sum = 0;
-        for (auto &&edge : mst){
+        for (int i = 0; i < mst.size(); i++) {
+            Edge edge = mst.at(i);
             edge.print();
             sum += edge.getWeight();
         }
+
         cout << "Total Weight:" << endl << sum << endl;
     }
     
     //minEdge
     Edge findMinEdge(Node n){
         //n.print();
-        treeHeap<Edge*> minQ = *new ::treeHeap<Edge*>();
+        treeHeap<Edge*> minQ = *new::treeHeap<Edge*>();
+
         //add edges from this node minQ
-        for (auto &&edge : n.connections){
-            minQ.push(&edge);
+        for(int i = 0; i < n.connections.size(); i++){
+            Edge* toPush = &n.connections.at(i);
+            minQ.push(toPush);
         }
         
         return *minQ.top();

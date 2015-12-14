@@ -7,8 +7,6 @@
 //
 
 #include "Graphs_HAM.h"
-#include "minHeap_HAM.h"
-
 
 int main(int argc, const char * argv[]) {
 
@@ -42,7 +40,9 @@ int main(int argc, const char * argv[]) {
     cin >> startNode;
 
     graph->PrimMST(startNode);
+
     graph->KruskalMST();
+
     graph->BoruvkaMST();
 
 }

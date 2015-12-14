@@ -9,7 +9,6 @@
 #include "Graphs_HAM.h"
 #include "minHeap_HAM.h"
 
-
 int main(int argc, const char * argv[]) {
     
     int numOfEdges;
@@ -41,8 +40,10 @@ int main(int argc, const char * argv[]) {
     int startNode;
     cin >> startNode;
     
-    graph->KruskalMST();
     graph->PrimMST(startNode);
+    
+    graph->KruskalMST();
+    
     graph->BoruvkaMST();
     
 }
